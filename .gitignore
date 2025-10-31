@@ -50,7 +50,6 @@ web_modules/
 
 # REPL history
 .node_repl_history
-
 # npm pack output
 *.tgz
 
