@@ -1,0 +1,204 @@
+## Step 2 — Database Setup (Sequelize Models + Relations)
+
+### What
+
+In this step, I created the complete database structure for the TesaHealth system using Sequelize, following the approach shown by my tutor. I also used SQLite as the storage engine, and to valid how the tables where build I used the external DB Browser for SQLite, which my database professor showed me some years ago.
+
+Instead of writing SQL manually, I defined each table in JavaScript files called model.
+Each model describes what data the table will store, how its fields are validated, and how it relates to other tables.
+
+The database now contains all the entities needed for Patients, Clinicians, Admins, Cases, Reviews, AI analysis, and final Consensus decisions.
+
+This step transforms the ER diagram from Step 1 into a code that generates a real database file called: tesahealth.db
+
+### Why I started with the database first
+
+In smaller web projects we normally start from the UI (mockups and frontend) and add the database at the end. However, TesaHealth has multiple user roles (Patient, Clinician, Admin), medical cases, AI artifacts, reviews, consensus, and logging, so the data model is more complex.
+
+For this reason, I decided secure the data structure first with Sequelize, because:
+- If the data model is wrong, everything else (backend and frontend) will suffer later.  
+- By having a solid database structure early, I can design the API routes knowing exactly what entities exist and how they relate to each other.  
+- The frontend can then be built on top of stable endpoints, without constantly changing the foundations of the system.
+
+
+### How
+
+#### 1. Creating the Sequelize connection
+
+Inside the backend/sequelize folder, I created an index.js file that acts as the “entry point” for my database. This file takes care of connecting to SQLite, loading all the model files, applying the relationships between them, and finally running sequelize.sync() to generate or update the database automatically.
+
+I configured SQLite so that the physical database file is stored at ops/db/tesahealth.db. This keeps the backend code clean and the database neatly separated from the rest of the application logic.
+
+
+#### 2. Defining the tables (models)
+
+Each model in backend/sequelize/model corresponds to a table in the database.
+I wrote the structure of each entity according to the ER diagram from Step 1.
+Here is what each of them represents:
+
+##### **user.model.js**
+
+First of all, I created the general user account (for Patients, Clinicians, and Admins).
+It includes:
+
+* personal data (name, surname, email, phone, address, date of birth)
+* login credentials (password, which is automatically hashed before saving)
+* account status (pending / valid / invalid)
+* user role (patient / clinician / admin)
+
+##### **patient_profile.model.js**
+
+This model corresponds to the information stored from the patient’s medical background, so we can keep track of the information used by the AI artifact to generate the MIR question and possibles differentials. It includes:
+
+* sex, height, weight
+* pregnancy
+* allergies
+* surgeries
+* chronic conditions
+* smoking habits
+* diabetes
+* hypertension
+
+For choosing wich information to include here, I based myself on the questions made by the app ADA diagnosis that also uses AI.
+This table are directly linked to the user table via the foreing key userId.
+
+##### **clinician_profile.model.js**
+
+When a doctor registers in Tesahealth, we want to be sure that they are a real professional. Therefore, this part of the DB is used to collect and store the credentials that will help us to determine if they are allowed to providde diagnose. The clinician's information includes:
+
+* medical license number
+* province college
+* specialty
+* MIR year
+* liability insurance
+* verification status
+
+For choosing what to ask, I based myself on the Spain's legal and regulatory framework for the medical profession.
+In the prototype of Tesahealth, the admins will check if the information is valid manually, but in the future this could be automatically.  
+This profile also belongs to a user record.
+
+##### **admin_profile.model.js**
+
+This user is the simplest one: it consist of a profile for system administrators. Therefore, we only stores their verification status and a link to a user, since they are the ones to have access to the DB for check evreything is okay.
+
+##### **case.model.js**
+
+This part of the DB represents a medical case submitted by a patient.
+It contains:
+
+* symptoms
+* intensity
+* fever
+* structured additional answers
+* case status (open / closed)
+* timestamps
+* the patient who created it(via the foreign key patientProfileId)
+
+This information is saved so we can keep track of the inicitial data submitted by the patient before the case is processed by the TesaHealth wareframe.
+
+##### **ai_artifact.model.js**
+
+In this part I want to stores the AI-generated analysis of the cases, so we can see  what was generated by the externals AIs and when it was generated. So we have:
+
+* vignette (the MIR-style question created by ChatGPT)
+* differentials (the possible diagnoses given by Infermedica)
+* timestamps
+* the case it comes from (foreign key: caseId)
+
+This allow us to separates AI logic from human reviews, so we can clearly see the “before” (AI output) and the “after” (clinician feedback and final consensus).
+
+##### **review.model.js**
+
+Here we save the clinician’s response to the AI analysis:
+
+* MIR-style question
+* chosen answer
+* urgency level
+* explanation/solution
+* timestamp
+* clinician who answered (foreign key: clinicianProfileId)
+* AI artifact evaluated (foreign key: aiArtifactId)
+
+For each review we have a structured human evaluation of the AI’s output,  including which differential diagnosis option was chosen.
+
+##### **consensus.model.js**
+
+This table contains the final medical decision after several clinicians have reviewed the case. It is composed by:
+
+* final diagnosis
+* final urgency
+* closure time
+* associated case (foreign key: caseId)
+* AI artifact evaluated (foreign key: aiArtifactId)
+
+It summarizes the final triage result shown to the patient.
+
+##### **logging.model.js**
+
+I want to have a record of the actions done by the users (who did what and when) so we can have traceability and help us to improve the quality, incident review and accountability. 
+So we store a simple history composed by:
+
+* what entity was modified
+* what action was performed
+* when it happened
+* who performed it (foreign key: userId)
+
+This will be also useful for auditability and system transparency.
+
+##### Note
+
+Conceptually, the flow will work like this:
+
+* A **Case** generates one **AIArtifact**.
+* That **AIArtifact** receives several **Reviews** from clinicians.
+* Based on those reviews, the system creates one **Consensus** for that case.
+
+In the database, each **Review** and each **Consensus** is linked both: to the **Case** (via the foreign key caseId), and  to the **AIArtifact** (via the foreing key aiArtifactId). I decided to do it this way so that later we can query the data easily either starting from the case or starting from the AI artifact, depending on what we need to analyse.
+
+
+#### 3. Setting up relationships between tables
+
+In the index.js file, I defined all relationships between all the tables using Sequelize’s .hasOne(), .hasMany(), and .belongsTo() functions. In practicem this means:
+
+* A **User** → has one **PatientProfile** / **ClinicianProfile** / **AdminProfile**  
+* A **PatientProfile** → has many **Cases**  
+* A **Case** → has one **AIArtifact**  
+* A **ClinicianProfile** → has many **Reviews**  
+* A **Case** → has many **Reviews**  
+* A **Case** → has one **Consensus**  
+* An **AIArtifact** → has many **Reviews**  
+* An **AIArtifact** → has one **Consensus**  
+* A **User** → has many **Logging** records  
+
+With this setup, I basically turn the ER diagram into real foreign keys inside the database. It also makes it easy later to navigate between users, profiles, cases, AI outputs, clinician reviews, and the final consensus decisions when I build the API and queries on top of this.
+
+
+#### 4. Generating the database
+
+Finally, I used the js command: sequelize.sync({ alter: true }). This automatically:
+
+* creates tables if they don’t exist yet
+* updates them if I change a model
+* and keeps the structure aligned with the ER diagram  
+
+Thanks to this, I don’t need to write any .sql files by hand; Sequelize generates all the SQL for me.
+
+### Why
+
+I did this step to convert the theoretical data model (from Step 1) into a working database layer.
+
+This helps me:
+
+* make sure all the entities in the system are properly represented  
+* enforce validations and field types
+* keep all the relationships between tables consistent  
+* have a solid foundation before building any API routes
+
+At this point, the system is real: now the data structure exists physically and can store actual patients, clinicians, cases, reviews, and AI outputs.
+
+It also prepares everything for the next step, where I will start writing the backend logic (API routes) that interact with this database.
+
+
+
+
+
