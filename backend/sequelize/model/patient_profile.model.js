@@ -3,6 +3,11 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   return sequelize.define('patient_profile', {
     id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
+    userId: {                        
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      unique: true,                 
+    },
     sex: { type: DataTypes.ENUM('M','W'), allowNull:true },
     height: DataTypes.FLOAT,
     weight: DataTypes.FLOAT,

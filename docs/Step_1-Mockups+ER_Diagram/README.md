@@ -7,6 +7,8 @@ It helps me understand what pages exist, what each user can do, and how the data
 
 There are three main roles in the system: **Patient**, **Clinician**, and **Admin**.  
 Each of them has different screens and actions.
+A single user account can have one or more of these profiles.  
+The login dropdown simply lets the user choose which profile they want to access at that moment.
 
 
 ### How
@@ -15,14 +17,19 @@ Each of them has different screens and actions.
 
 When someone enters the main page, they first see the **login and registration screen**.
 
-- If the person is new, they can **register** by selecting “Who are you?”.  
-  They must choose their role (Patient / Clinician / Admin) and **accept the privacy policy** before continuing.
+- If the person is new, they can register by creating a general user account (email, password, and basic personal information).  
+  The system does not force them to choose a role at registration, because a single user can later create multiple profiles (Patient, Clinician or Admin) linked to the same account.
 
-- If they already have an account, they can **log in directly** by writing their username and password.  
-  I will also add a small dropdown menu so the user can select which profile they want to enter (Patient, Clinician, or Admin).
+
+- If they already have an account, they can log in directly using their email and password.  
+  After a successful login, the system checks which profiles this user has already created (patient, clinician, admin) and shows a dropdown so they can choose which profile they want to enter.  
+  If they select a profile that does not exist yet, the system will guide them through creating it.
 
 
 #### 2. Patient profile and actions
+
+A user can only enter as a Patient if they already have a patient profile linked to their account.  
+If they choose the Patient option but do not have this profile yet, the system will ask them to create it first.
 
 When the user enters as a **Patient**, they will see four main options:
 
@@ -60,6 +67,9 @@ When the user enters as a **Patient**, they will see four main options:
 
 #### 3. Clinician profile and actions
 
+A user can only enter as a Clinician if they have a clinician profile linked to their account.  
+If they choose this option but do not have a clinician profile yet, they will be asked to complete the professional information form. Their profile will then remain in "pending" status until an Admin verifies it.
+
 When a user enters as a **Clinician**, they first need to provide professional information.
 
 - They must upload their **medical documents and evidence**.  
@@ -81,6 +91,9 @@ Once verified, they have three main options:
 
 
 #### 4. Admin profile and actions
+
+A user can only enter as an Admin if they already have an admin profile linked to their account.  
+If not, they must create it and wait for verification before accessing the admin functionalities.
 
 To enter as an **Admin**, the person must first register and then receive authorization.
 

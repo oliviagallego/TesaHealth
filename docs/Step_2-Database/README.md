@@ -46,6 +46,11 @@ It includes:
 * account status (pending / valid / invalid)
 * user role (patient / clinician / admin)
 
+In this system, the user table represents the identity of the person (email, password and basic data).  
+A single user account can then have one or more profiles (patient, clinician, admin), each linked through the foreign key userId.  
+This means that the same person can log in once and choose which profile they want to enter from the login dropdown.
+
+
 ##### **patient_profile.model.js**
 
 This model corresponds to the information stored from the patient’s medical background, so we can keep track of the information used by the AI artifact to generate the MIR question and possibles differentials. It includes:
@@ -59,6 +64,8 @@ This model corresponds to the information stored from the patient’s medical ba
 * diabetes
 * hypertension
 
+This profile is linked to the user table through the foreign key userId.  
+A user can have a patient profile even if they also have clinician or admin profiles.
 For choosing wich information to include here, I based myself on the questions made by the app ADA diagnosis that also uses AI.
 This table are directly linked to the user table via the foreing key userId.
 
@@ -73,6 +80,8 @@ When a doctor registers in Tesahealth, we want to be sure that they are a real p
 * liability insurance
 * verification status
 
+This profile is linked to the user table through the foreign key userId.  
+A user can have a clinician profile even if they also have patient or admin profiles.
 For choosing what to ask, I based myself on the Spain's legal and regulatory framework for the medical profession.
 In the prototype of Tesahealth, the admins will check if the information is valid manually, but in the future this could be automatically.  
 This profile also belongs to a user record.
@@ -80,6 +89,8 @@ This profile also belongs to a user record.
 ##### **admin_profile.model.js**
 
 This user is the simplest one: it consist of a profile for system administrators. Therefore, we only stores their verification status and a link to a user, since they are the ones to have access to the DB for check evreything is okay.
+This profile is linked to the user table through the foreign key userId.  
+A user can have a admin profile even if they also have clinician or patient profiles.
 
 ##### **case.model.js**
 
@@ -155,6 +166,9 @@ Conceptually, the flow will work like this:
 
 In the database, each **Review** and each **Consensus** is linked both: to the **Case** (via the foreign key caseId), and  to the **AIArtifact** (via the foreing key aiArtifactId). I decided to do it this way so that later we can query the data easily either starting from the case or starting from the AI artifact, depending on what we need to analyse.
 
+In addition, the system allows a single user account to have multiple profiles.  
+For example, the same person can log in once and enter as a patient or as a clinician, depending on which profiles exist for their userId.  
+If the user selects a profile that they do not have yet, the system will guide them through creating that profile (for example, completing the clinician credentials) and set it to “pending” until an admin verifies it.
 
 #### 3. Setting up relationships between tables
 
