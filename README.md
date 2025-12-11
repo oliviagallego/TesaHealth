@@ -11,5 +11,10 @@ The application is designed with a future scenario in mind where it could be int
 Overall, the goal of this approach is to help optimize the health system by reducing waiting lists, enabling pre-assessment that stratifies urgency, improving interoperability and person-centred care (PCC), and increasing health literacy. It combines clinical AI with specialized human oversight to deliver more reliable and trustworthy results.
 
 
-© 2025 Olivia Gallego Toscano.
-All rights reserved. No use, reproduction, modification, or distribution is permitted without express written permission.
+Copyright © 2025 Olivia Gallego Toscano. All rights reserved.
+
+No part of this software or its source code may be used, reproduced, modified, or distributed in any form or by any means
+without the prior express written permission of the author.
+
+For commercial licensing or collaboration inquiries, please contact: o.gallego1@usp.ceu.es
+
