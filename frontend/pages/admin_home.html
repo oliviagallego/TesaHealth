@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TesaHealth | Admin</title>
+
+    <link rel="icon" href="/assets/img/icono.png" type="image/png" />
+    <link rel="stylesheet" href="/css/index.css" />
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="nav-wrap">
+            <a class="brand" href="/" aria-label="Go to TesaHealth home">
+                <img class="brand-icon" src="/assets/img/icono.png" alt="TesaHealth icon" />
+                <div class="brand-text">
+                    <div class="brand-name">TesaHealth</div>
+                </div>
+            </a>
+
+            <nav class="nav" aria-label="Primary navigation">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/pages/patient_home.html" class="nav-link">Patient</a>
+                <a href="/pages/clinician_home.html" class="nav-link">Clinician</a>
+                <a href="/pages/admin_home.html" class="nav-link active" aria-current="page">Admin</a>
+            </nav>
+
+            <div class="nav-cta">
+                <a class="btn btn-ghost" href="/pages/login.html">Login</a>
+                <a class="btn btn-primary" href="/pages/register.html">Request access</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero hero-image hero-admin" aria-label="Admin intro">
+        <div class="hero-overlay" aria-hidden="true"></div>
+
+        <div class="container hero-grid">
+            <div class="hero-copy">
+                <h1>
+                    Keep the platform safe.
+                    <span class="accent">Verify, oversee, audit.</span>
+                </h1>
+
+                <p class="lead">
+                    The Admin portal exists for governance and security: verify clinician/admin accounts, oversee case
+                    flow to
+                    consensus, and review logs for traceability.
+                </p>
+
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="/pages/login.html">Open admin console</a>
+                    <a class="btn btn-ghost" href="#how">How it works</a>
+                </div>
+
+                <div class="hero-note" role="note" aria-label="Restricted access note">
+                    <span class="dot" aria-hidden="true"></span>
+                    <span>
+                        Restricted access. Role-based permissions apply.
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <!-- OVERVIEW -->
+        <section class="section" aria-label="Admin overview">
+            <div class="container">
+                <div class="section-head">
+                    <h2>Why the Admin portal exists</h2>
+                    <p>
+                        TesaHealth is designed with safety-first controls: verified roles, conservative urgency rules,
+                        and a traceable
+                        workflow. Admins ensure the platform remains trustworthy and accountable.
+                    </p>
+                </div>
+
+                <div class="cards-3 overview-cards">
+                    <article class="info-card">
+                        <h3>Verification & trust</h3>
+                        <p>Approve or reject clinician/admin accounts based on identity and credential checks.</p>
+                    </article>
+
+                    <article class="info-card">
+                        <h3>Governance & oversight</h3>
+                        <p>Monitor case progression (waiting / in review / closed) and spot delays or stuck cases.</p>
+                    </article>
+
+                    <article class="info-card">
+                        <h3>Audit & accountability</h3>
+                        <p>Review logs, trace actions, and respond to incidents with attributable, recorded decisions.
+                        </p>
+                    </article>
+                </div>
+
+                <aside class="stats-card" aria-label="Admin scope">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>What Admins manage (and what they don’t)</h3>
+                            <p class="card-sub">Governance & safety only — not clinical care.</p>
+                        </div>
+
+                        <div class="stats-grid">
+                            <div class="stat">
+                                <div class="stat-label">Manages</div>
+                                <div class="stat-value">Verification workflow</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-label">Manages</div>
+                                <div class="stat-value">Access verification & approvals</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-label">Manages</div>
+                                <div class="stat-value">Case oversight + logs</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-label">Does not</div>
+                                <div class="stat-value">Diagnose or prescribe</div>
+                            </div>
+                        </div>
+
+                        <div class="mini-proof">
+                            <strong>Note:</strong> Critical actions should be logged and attributable to a verified
+                            admin user.
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS -->
+        <section id="how" class="section" aria-label="How it works for admins">
+            <div class="container">
+                <div class="section-head">
+                    <h2>How it works</h2>
+                    <p>A simple admin workflow: verification → oversight → audit, designed for traceability.</p>
+                </div>
+
+                <div class="how">
+                    <article class="how-step">
+                        <div class="how-badge">01</div>
+                        <div class="how-body">
+                            <h3>Review verification requests</h3>
+                            <p>Open pending verifications, check identity/credentials, then approve or reject with a
+                                recorded reason.</p>
+                        </div>
+                    </article>
+
+                    <article class="how-step">
+                        <div class="how-badge">02</div>
+                        <div class="how-body">
+                            <h3>Grant role-based access</h3>
+                            <p>Only verified accounts gain access to clinician/admin tools and sensitive platform areas.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="how-step">
+                        <div class="how-badge">03</div>
+                        <div class="how-body">
+                            <h3>Monitor case progression</h3>
+                            <p>Track cases moving to consensus and identify delays (e.g., waiting for quorum or missing
+                                reviews).</p>
+                        </div>
+                    </article>
+
+                    <article class="how-step">
+                        <div class="how-badge">04</div>
+                        <div class="how-body">
+                            <h3>Audit and respond</h3>
+                            <p>Use logs to trace activity, investigate issues, and apply controlled security actions if
+                                needed.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="cta-box">
+                    <div>
+                        <h3>Go to the admin console</h3>
+                        <p>Admin access requires approval. If you’re not verified, you may be redirected or denied
+                            access.</p>
+                    </div>
+                    <div class="cta-actions">
+                        <a class="btn btn-primary" href="/pages/login.html">Login</a>
+                        <a class="btn btn-ghost" href="/pages/register.html">Request access</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECURITY & TRACEABILITY -->
+        <section class="section alt" aria-label="Security and traceability">
+            <div class="container">
+                <div class="section-head">
+                    <h2>Security & traceability</h2>
+                    <p>Controls designed to keep access restricted and actions accountable.</p>
+                </div>
+
+                <div class="cards-3">
+                    <article class="info-card">
+                        <h3>Role-based access</h3>
+                        <p>Admin tools are restricted. Clinician/admin roles require verification and approval.</p>
+                    </article>
+
+                    <article class="info-card">
+                        <h3>Audit trail</h3>
+                        <p>Key actions (approvals, role changes, security events) are logged for accountability and
+                            investigations.</p>
+                    </article>
+
+                    <article class="info-card">
+                        <h3>Incident response</h3>
+                        <p>Investigate suspicious activity and take controlled actions (e.g., lock accounts) when
+                            appropriate.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section" aria-label="Admin FAQ">
+            <div class="container">
+                <div class="section-head">
+                    <h2>FAQ</h2>
+                    <p>Quick answers for admin users.</p>
+                </div>
+
+                <div class="card">
+                    <details>
+                        <summary><strong>What is the admin role for?</strong></summary>
+                        <p>Governance and safety: verify accounts, oversee case progression, and review audit logs.</p>
+                    </details>
+
+                    <details>
+                        <summary><strong>Can admins edit clinical results?</strong></summary>
+                        <p>Admins manage access and oversight. Clinical consensus is generated through clinician reviews
+                            and system rules.</p>
+                    </details>
+
+                    <details>
+                        <summary><strong>What should be logged?</strong></summary>
+                        <p>Any sensitive action: approvals/rejections, role changes, security actions, and key oversight
+                            events.</p>
+                    </details>
+
+                    <details>
+                        <summary><strong>How do verifications work?</strong></summary>
+                        <p>Admins review identity and professional evidence, then approve or reject with a recorded
+                            reason.</p>
+                    </details>
+
+                    <details>
+                        <summary><strong>What if a case is stuck on “Waiting for consensus”?</strong></summary>
+                        <p>Check quorum status, missing reviews, and system errors. Use logs to identify where the flow
+                            stopped.</p>
+                    </details>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="section" aria-label="Contact">
+            <div class="container">
+                <div class="section-head">
+                    <h2>Contact</h2>
+                    <p>For technical support and thesis-related questions.</p>
+                </div>
+
+                <div class="contact-grid contact-main">
+                    <a class="contact-card" href="mailto:tesahealth.tfg@gmail.com" aria-label="Email TesaHealth">
+                        <img class="contact-icon" src="/assets/img/icono_email.png" alt="" aria-hidden="true" />
+                        <div class="contact-text">
+                            <div class="contact-title">Email</div>
+                            <div class="contact-value">tesahealth.tfg@gmail.com</div>
+                        </div>
+                    </a>
+
+                    <a class="contact-card" href="tel:+34912345678" aria-label="Call TesaHealth">
+                        <img class="contact-icon" src="/assets/img/icono_tel.png" alt="" aria-hidden="true" />
+                        <div class="contact-text">
+                            <div class="contact-title">Phone</div>
+                            <div class="contact-value">+34 912 345 678</div>
+                        </div>
+                    </a>
+
+                    <a class="contact-card" aria-label="Address">
+                        <img class="contact-icon" src="/assets/img/icono_dir.png" alt="" aria-hidden="true" />
+                        <div class="contact-text">
+                            <div class="contact-title">Address</div>
+                            <div class="contact-value">Calle de la Universidad, 123, Madrid</div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="contact-grid contact-meta" aria-label="Safety information">
+                    <div class="contact-pill">
+                        <div class="pill-title">Disclaimer</div>
+                        <div class="pill-text">Educational use only. Does not replace medical advice.</div>
+                    </div>
+
+                    <div class="contact-pill contact-pill-danger">
+                        <div class="pill-title">Security</div>
+                        <div class="pill-text"><strong>MFA</strong> use strong passwords and email-code confirmations.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="container footer-grid">
+                <div class="footer-brand">
+                    <img class="brand-icon" src="/assets/img/icono.png" alt="TesaHealth icon" />
+                    <div>
+                        <div class="footer-name">TesaHealth</div>
+                    </div>
+                </div>
+
+                <div class="footer-links" aria-label="Footer links">
+                    <a href="/">Home</a>
+                    <a href="/pages/patient_home.html">Patient</a>
+                    <a href="/pages/clinician_home.html">Clinician</a>
+                    <a href="/pages/admin_home.html">Admin</a>
+                    <a href="/pages/login.html">Login</a>
+                    <a href="/pages/register.html">Request access</a>
+                </div>
+
+                <div class="footer-copy">© 2026 TesaHealth • All rights reserved</div>
+            </div>
+        </footer>
+    </main>
+
+    <script src="/js/index.js"></script>
+</body>
+
+</html>

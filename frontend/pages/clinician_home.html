@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TesaHealth | Clinician</title>
+
+  <link rel="icon" href="/assets/img/icono.png" type="image/png" />
+  <link rel="stylesheet" href="/css/index.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="/" aria-label="Go to TesaHealth home">
+        <img class="brand-icon" src="/assets/img/icono.png" alt="TesaHealth icon" />
+        <div class="brand-text">
+          <div class="brand-name">TesaHealth</div>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/pages/patient_home.html" class="nav-link">Patient</a>
+        <a href="/pages/clinician_home.html" class="nav-link active" aria-current="page">Clinician</a>
+        <a href="/pages/admin_home.html" class="nav-link">Admin</a>
+      </nav>
+
+      <div class="nav-cta">
+        <a class="btn btn-ghost" href="/pages/login.html">Login</a>
+        <a class="btn btn-primary" href="/pages/register.html">Request verification</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero hero-image hero-clinician" aria-label="Clinician intro">
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <h1>
+          Fast case reviews.
+          <span class="accent">Safer consensus triage.</span>
+        </h1>
+
+        <p class="lead">
+          Review short MIR-style clinical vignettes, vote on the most likely category and urgency,
+          and help produce a clinician-backed consensus result for patient orientation.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/pages/register.html">Request verification</a>
+          <a class="btn btn-ghost" href="#how">How it works</a>
+        </div>
+
+        <div class="hero-note" role="note" aria-label="Scope disclaimer">
+          <span class="dot" aria-hidden="true"></span>
+          <span>
+            Orientation only. No prescriptions, dosing, or treatment plans are generated in the final output.
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <!-- WHY JOIN -->
+    <section class="section" aria-label="Why clinicians join">
+      <div class="container">
+        <div class="section-head">
+          <h2>Why join as a clinician</h2>
+          <p>
+            Designed for efficiency, bias reduction, and a safety-first result. Your review helps improve patient
+            guidance.
+          </p>
+        </div>
+
+        <div class="cards-3 overview-cards">
+          <article class="info-card">
+            <h3>Micro-reviews</h3>
+            <p>One screen: read the vignette, pick the best option, set urgency, add a short note.</p>
+          </article>
+
+          <article class="info-card">
+            <h3>Blinded voting</h3>
+            <p>Reviews are independent. You don’t see others’ votes until case closure to reduce anchoring bias.</p>
+          </article>
+
+          <article class="info-card">
+            <h3>Safety-first aggregation</h3>
+            <p>Final urgency is conservative by design to reduce the risk of under-triage.</p>
+          </article>
+        </div>
+
+        <aside class="stats-card" aria-label="Clinician scope">
+          <div class="card">
+            <div class="card-header">
+              <h3>Clinical scope</h3>
+              <p class="card-sub">What you’re contributing to.</p>
+            </div>
+
+            <div class="stats-grid">
+              <div class="stat">
+                <div class="stat-label">You provide</div>
+                <div class="stat-value">Category + urgency</div>
+              </div>
+              <div class="stat">
+                <div class="stat-label">Optional</div>
+                <div class="stat-value">Short reasoning note</div>
+              </div>
+              <div class="stat">
+                <div class="stat-label">Platform outputs</div>
+                <div class="stat-value">Orientation + next steps</div>
+              </div>
+              <div class="stat">
+                <div class="stat-label">Not included</div>
+                <div class="stat-value">Rx / dosing / treatment</div>
+              </div>
+            </div>
+
+            <div class="mini-proof">
+              <strong>Reminder:</strong> This is an educational triage/orientation workflow, not a clinical service.
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="section alt" aria-label="How it works for clinicians">
+      <div class="container">
+        <div class="section-head">
+          <h2>How it works</h2>
+          <p>Verification → review queue → consensus result, with traceability and bias controls.</p>
+        </div>
+
+        <div class="how">
+          <article class="how-step">
+            <div class="how-badge">01</div>
+            <div class="how-body">
+              <h3>Request verification</h3>
+              <p>Upload credentials (degree + membership evidence). Access is granted after admin approval.</p>
+            </div>
+          </article>
+
+          <article class="how-step">
+            <div class="how-badge">02</div>
+            <div class="how-body">
+              <h3>Access the review queue</h3>
+              <p>See new cases ready for review. Cases are structured for fast reading and consistent inputs.</p>
+            </div>
+          </article>
+
+          <article class="how-step">
+            <div class="how-badge">03</div>
+            <div class="how-body">
+              <h3>Blinded independent review</h3>
+              <p>Select the most likely category and urgency. Add a short note if helpful.</p>
+            </div>
+          </article>
+
+          <article class="how-step">
+            <div class="how-badge">04</div>
+            <div class="how-body">
+              <h3>Consensus + conservative urgency</h3>
+              <p>Once quorum is reached, the case closes and the final urgency is chosen conservatively.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="cta-box">
+          <div>
+            <h3>Join the verified clinician network</h3>
+            <p>Apply for verification and start reviewing cases in minutes once approved.</p>
+          </div>
+          <div class="cta-actions">
+            <a class="btn btn-primary" href="/pages/register.html">Request verification</a>
+            <a class="btn btn-ghost" href="/pages/login.html">Login</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSIDE THE PORTAL -->
+    <section class="section" aria-label="Inside the clinician portal">
+      <div class="container">
+        <div class="section-head">
+          <h2>Inside the clinician portal</h2>
+          <p>Everything you need to review efficiently, plus visibility after closure.</p>
+        </div>
+
+        <div class="cards-3">
+          <article class="portal-card2">
+            <div class="portal-head2">
+              <div class="portal-title2">Review queue</div>
+            </div>
+            <div class="portal-reveal2" aria-hidden="true">
+              <ul>
+                <li>Structured vignette</li>
+                <li>Top differential options</li>
+                <li>Urgency selection</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="portal-card2">
+            <div class="portal-head2">
+              <div class="portal-title2">Case history</div>
+            </div>
+            <div class="portal-reveal2" aria-hidden="true">
+              <ul>
+                <li>Your past reviews</li>
+                <li>Final consensus outcome</li>
+                <li>Post-closure comparison</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="portal-card2">
+            <div class="portal-head2">
+              <div class="portal-title2">Earnings</div>
+            </div>
+
+            <div class="portal-reveal2" aria-hidden="true">
+              <ul>
+                <li>+10€ per submitted review</li>
+                <li>+10€ bonus if your answer matches the final consensus</li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SAFETY -->
+    <section class="section alt" aria-label="Safety by design">
+      <div class="container">
+        <div class="section-head">
+          <h2>Safety by design</h2>
+          <p>The platform is built to avoid unsafe outputs and to favor conservative triage.</p>
+        </div>
+
+        <div class="cards-3">
+          <article class="info-card">
+            <h3>No prescriptions</h3>
+            <p>Final outputs avoid medication advice, dosing, or treatment plans.</p>
+          </article>
+
+          <article class="info-card">
+            <h3>Conservative urgency</h3>
+            <p>Urgency is aggregated with a safety-first rule to reduce under-triage risk.</p>
+          </article>
+
+          <article class="info-card">
+            <h3>Accountability</h3>
+            <p>Actions are logged to support auditing and educational transparency.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" aria-label="Clinician FAQ">
+      <div class="container">
+        <div class="section-head">
+          <h2>FAQ</h2>
+          <p>Before you apply.</p>
+        </div>
+
+        <div class="card">
+          <details>
+            <summary><strong>How long does a case take?</strong></summary>
+            <p>Designed as a micro-review: read a short vignette, select category + urgency, add a brief note if needed.
+            </p>
+          </details>
+
+          <details>
+            <summary><strong>Do I see other clinicians’ votes?</strong></summary>
+            <p>No. Reviews are blinded until closure to reduce bias and anchoring.</p>
+          </details>
+
+          <details>
+            <summary><strong>How is the final urgency decided?</strong></summary>
+            <p>The platform uses a conservative aggregation rule so safety is prioritized.</p>
+          </details>
+
+          <details>
+            <summary><strong>What is required for verification?</strong></summary>
+            <p>Professional evidence (degree and membership proof). Access is granted after admin approval.</p>
+          </details>
+
+          <details>
+            <summary><strong>Does the platform provide treatments?</strong></summary>
+            <p>No. The scope is orientation and safer next steps, no prescriptions, dosing, or treatment plans.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" aria-label="Contact">
+      <div class="container">
+        <div class="section-head">
+          <h2>Contact</h2>
+          <p>For technical support and thesis-related questions.</p>
+        </div>
+
+        <div class="contact-grid contact-main">
+          <a class="contact-card" href="mailto:tesahealth.tfg@gmail.com" aria-label="Email TesaHealth">
+            <img class="contact-icon" src="/assets/img/icono_email.png" alt="" aria-hidden="true" />
+            <div class="contact-text">
+              <div class="contact-title">Email</div>
+              <div class="contact-value">tesahealth.tfg@gmail.com</div>
+            </div>
+          </a>
+
+          <a class="contact-card" href="tel:+34912345678" aria-label="Call TesaHealth">
+            <img class="contact-icon" src="/assets/img/icono_tel.png" alt="" aria-hidden="true" />
+            <div class="contact-text">
+              <div class="contact-title">Phone</div>
+              <div class="contact-value">+34 912 345 678</div>
+            </div>
+          </a>
+
+          <a class="contact-card" aria-label="Address">
+            <img class="contact-icon" src="/assets/img/icono_dir.png" alt="" aria-hidden="true" />
+            <div class="contact-text">
+              <div class="contact-title">Address</div>
+              <div class="contact-value">Calle de la Universidad, 123, Madrid</div>
+            </div>
+          </a>
+        </div>
+
+        <div class="contact-grid contact-meta" aria-label="Safety information">
+          <div class="contact-pill">
+            <div class="pill-title">Disclaimer</div>
+            <div class="pill-text">Educational use only. Does not replace medical advice.</div>
+          </div>
+
+          <div class="contact-pill contact-pill-danger">
+            <div class="pill-title">Emergencies</div>
+            <div class="pill-text">Spain: <strong>112</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <img class="brand-icon" src="/assets/img/icono.png" alt="TesaHealth icon" />
+          <div>
+            <div class="footer-name">TesaHealth</div>
+          </div>
+        </div>
+
+        <div class="footer-links" aria-label="Footer links">
+          <a href="/">Home</a>
+          <a href="/pages/patient_home.html">Patient</a>
+          <a href="/pages/clinician_home.html">Clinician</a>
+          <a href="/pages/admin_home.html">Admin</a>
+          <a href="/pages/login.html">Login</a>
+          <a href="/pages/register.html">Request verification</a>
+        </div>
+
+        <div class="footer-copy">© 2026 TesaHealth • All rights reserved</div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="/js/index.js"></script>
+</body>
+
+</html>

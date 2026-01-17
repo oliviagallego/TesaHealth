@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TesaHealth | Clinician • Edit profile</title>
+
+  <link rel="icon" href="/assets/img/icono.png" type="image/png" />
+
+  <link rel="stylesheet" href="/css/index.css" />
+  <link rel="stylesheet" href="/css/login-register.css" />
+  <link rel="stylesheet" href="/css/area_admin.css" />
+  <link rel="stylesheet" href="/css/clinician_profile.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="/" aria-label="Go to TesaHealth home">
+        <img class="brand-icon brand-icon--plain" src="/assets/img/icono.png" alt="TesaHealth icon" />
+        <div class="brand-text">
+          <div class="brand-name brand-name--lg">TesaHealth</div>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/pages/patient_home.html" class="nav-link">Patient</a>
+        <a href="/pages/clinician_home.html" class="nav-link active" aria-current="page">Clinician</a>
+        <a href="/pages/admin_home.html" class="nav-link">Admin</a>
+      </nav>
+
+      <div class="nav-cta">
+        <a class="btn btn-ghost" href="/pages/area_clinician.html">Back</a>
+        <button id="btnLogout" class="btn btn-ghost" type="button">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="auth" aria-label="Clinician edit profile">
+    <div class="container">
+      <div class="auth-grid pp-grid">
+        <!-- Left panel -->
+        <section class="auth-side">
+          <h1 class="auth-title">Edit your profile</h1>
+          <p class="auth-sub">
+            Keep your account and professional data up to date. This helps verification and clinical workflow.
+          </p>
+
+          <div class="auth-note" role="note" aria-label="Disclaimer">
+            <span class="dot" aria-hidden="true"></span>
+            <span>For emergencies, call <strong>112</strong>.</span>
+          </div>
+        </section>
+
+        <!-- Card -->
+        <section class="auth-card" aria-label="Profile form">
+          <header class="auth-card-head">
+            <h2 class="auth-card-title">Profile</h2>
+            <p class="auth-card-sub">Your data is prefilled. Update what you need and save.</p>
+          </header>
+
+          <form id="profileForm" class="auth-form" novalidate>
+            <h3 class="role-title">Account</h3>
+
+            <div class="grid-2">
+              <label class="field">
+                <span class="field-label">Name</span>
+                <input id="name" type="text" autocomplete="given-name" required />
+              </label>
+
+              <label class="field">
+                <span class="field-label">Surname</span>
+                <input id="surname" type="text" autocomplete="family-name" required />
+              </label>
+            </div>
+
+            <label class="field">
+              <span class="field-label">Email (read-only)</span>
+              <input id="email" type="email" autocomplete="email" readonly />
+            </label>
+
+            <label class="field">
+              <span class="field-label">Address</span>
+              <input id="address" type="text" autocomplete="street-address" required />
+            </label>
+
+            <div class="grid-2">
+              <label class="field">
+                <span class="field-label">Date of birth</span>
+                <input id="dob" type="date" required />
+              </label>
+
+              <label class="field">
+                <span class="field-label">Phone</span>
+                <input id="phone" type="tel" autocomplete="tel" required />
+              </label>
+            </div>
+
+            <div class="pp-divider"></div>
+
+            <h3 class="role-title">Professional</h3>
+
+            <div class="grid-2">
+              <label class="field">
+                <span class="field-label">Medical college registration nº</span>
+                <input id="medicalRegNo" type="text" placeholder="e.g. 28/12345" />
+              </label>
+
+              <label class="field">
+                <span class="field-label">Provincial college</span>
+                <input id="provCollege" type="text" placeholder="e.g. Madrid" />
+              </label>
+            </div>
+
+            <div class="grid-2">
+              <label class="field">
+                <span class="field-label">Specialty</span>
+                <input id="specialty" type="text" placeholder="e.g. Internal Medicine" />
+              </label>
+
+              <label class="field">
+                <span class="field-label">MIR year</span>
+                <input id="mirYear" type="number" min="1900" max="2100" step="1" placeholder="e.g. 2021" />
+              </label>
+            </div>
+
+            <div class="grid-2">
+              <label class="field">
+                <span class="field-label">Professional liability insurance</span>
+                <input id="liabilityInsurance" type="text" placeholder="e.g. Mutual Médica – Póliza nº MM-987646" />
+              </label>
+
+            </div>
+          </form>
+
+          <!-- Buttons BEFORE password -->
+          <div class="step-actions pp-actions">
+            <a class="btn btn-ghost" href="/pages/area_clinician.html">Back</a>
+            <button id="btnSaveProfile" class="btn btn-primary" type="submit" form="profileForm">
+              Save changes
+            </button>
+          </div>
+
+          <div class="pp-divider"></div>
+
+          <!-- Password change -->
+          <div class="pp-divider"></div>
+
+          <!-- SECURITY -->
+          <div class="subpanel" style="margin-top:14px;">
+            <div class="subpanel-title">Change password</div>
+            <p class="muted" style="margin-top:6px;">
+              We will email you a 6-digit code (10 min).
+            </p>
+
+            <!-- STEP 1 -->
+            <div id="apPwStep1" class="form-grid">
+              <label class="field" style="grid-column:1/-1;">
+                <span class="field-label">New password</span>
+                <input id="apNewPassword" class="input" type="password" minlength="8" autocomplete="new-password"
+                  placeholder="New password" />
+              </label>
+
+              <label class="field" style="grid-column:1/-1;">
+                <span class="field-label">Repeat new password</span>
+                <input id="apNewPassword2" class="input" type="password" minlength="8" autocomplete="new-password"
+                  placeholder="Repeat new password" />
+              </label>
+
+              <div class="actions" style="grid-column:1/-1;">
+                <button id="btnApSendCode" class="btn btn-primary" type="button">Send code</button>
+              </div>
+            </div>
+
+            <!-- STEP 2 -->
+            <div id="apPwStep2" class="form-grid is-hidden">
+              <label class="field" style="grid-column:1/-1;">
+                <span class="field-label">Verification code</span>
+                <input id="apCode" class="input" placeholder="e.g. 483921" autocomplete="one-time-code"
+                  inputmode="numeric" maxlength="6" />
+              </label>
+
+              <div class="actions" style="grid-column:1/-1;">
+                <button id="btnApBackPw" class="btn btn-ghost" type="button">Back</button>
+                <button id="btnApChangePassword" class="btn btn-primary" type="button">Confirm change</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel" style="margin-top:14px;">
+            <div class="panel-title">Delete account</div>
+            <p class="muted" style="margin:6px 0 14px;">
+              This action disables and anonymizes your account. You will receive a 6-digit code by email to confirm.
+            </p>
+
+            <!-- Step 1 -->
+            <div id="apDelStep1">
+              <button id="btnApSendDeleteCode" class="btn btn-danger" type="button">
+                Send delete code
+              </button>
+            </div>
+
+            <!-- Step 2 -->
+            <div id="apDelStep2" class="is-hidden" style="margin-top:12px;">
+              <label class="field">
+                <span class="field-label">Enter 6-digit code</span>
+                <input id="apDeleteCode" class="input" type="text" inputmode="numeric" maxlength="6"
+                  placeholder="123456" autocomplete="one-time-code" />
+              </label>
+
+              <div class="actions" style="margin-top:12px;">
+                <button id="btnApConfirmDelete" class="btn btn-danger" type="button">
+                  Confirm delete
+                </button>
+                <button id="btnApBackDelete" class="btn btn-ghost" type="button">
+                  Back
+                </button>
+              </div>
+            </div>
+          </div>
+
+      </div>
+      </section>
+    </div>
+    </div>
+  </main>
+
+  <div id="toast" class="toast" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="/js/clinician_profile.js"></script>
+</body>
+
+</html>

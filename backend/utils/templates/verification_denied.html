@@ -1,0 +1,81 @@
+<!-- utils/templates/verification_denied.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Account denied - TesaHealth</title>
+</head>
+
+<body
+    style="margin:0; padding:0; background-color:#f3f4f6; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color:#111827;">
+    <div style="max-width:600px; margin:0 auto; padding:24px;">
+
+        <!-- BRAND -->
+        <header style="text-align:center; margin-bottom:24px;">
+            <img src="{{LOGO_URL}}" alt="TesaHealth"
+                style="width:120px; height:auto; display:block; margin:0 auto 10px;" />
+            <div style="font-weight:800; font-size:22px; letter-spacing:-0.02em; color:#123a63;">
+                TesaHealth
+            </div>
+            <div style="margin-top:6px; font-size:13px; color:#5b6b7a;">
+                Account update
+            </div>
+        </header>
+
+        <!-- MAIN CARD -->
+        <main
+            style="background-color:#ffffff; border-radius:12px; padding:24px; box-shadow:0 1px 3px rgba(15,23,42,0.08);">
+            <h2 style="margin-top:0; margin-bottom:12px; color:#123a63; font-size:22px; letter-spacing:-0.02em;">
+                Account denied
+            </h2>
+
+            <p style="margin:0 0 10px; color:#374151; line-height:1.6;">
+                Hi <strong>{{NAME}}</strong>,
+            </p>
+
+            <p style="margin:0 0 16px; color:#374151; line-height:1.6;">
+                Your <strong>{{ROLE}}</strong> account request was denied.
+            </p>
+
+            {{NOTE_BLOCK}}
+
+            <!-- CTA BUTTON -->
+            <div style="text-align:center; margin:18px 0 22px;">
+                <a href="{mailto:tesahealth.tfg@gmail.com?subject=TesaHealth%20-%20Account%20denied&body=Hi%20TesaHealth%20team,%0A%0AMy%20account%20request%20was%20denied.%0ARole:%20{{ROLE}}%0AEmail:%20{{EMAIL}}%0AName:%20{{NAME}}%0A%0APlease%20review%20my%20case.%0A%0AThanks.}"
+                    style="display:inline-block; padding:12px 18px; border-radius:999px; text-decoration:none; font-size:14px; font-weight:700; background:linear-gradient(135deg,#206a69,#123a63); color:#ffffff;"
+                    target="_blank" rel="noopener">
+                    Contact support
+                </a>
+            </div>
+
+            <!-- SECURITY NOTE -->
+            <div
+                style="background:#f4f7f8; border:1px solid rgba(18,58,99,0.12); border-radius:12px; padding:14px; margin-top:14px;">
+                <p style="margin:0; color:#374151; font-size:13px; line-height:1.6;">
+                    If you didn’t request this account, you can ignore this email. No action will be taken.
+                </p>
+            </div>
+
+            <p style="margin:18px 0 0; color:#374151;">
+                Thank you,<br />
+                <strong>The TesaHealth Team</strong>
+            </p>
+        </main>
+
+        <!-- FOOTER -->
+        <footer
+            style="margin-top:26px; padding-top:16px; border-top:1px solid #e5e7eb; font-size:12px; color:#6b7280; text-align:center;">
+            <div style="display:flex; align-items:center; justify-content:center; gap:8px;">
+                <img src="{{ICON_URL}}" alt="TesaHealth icon" style="width:18px; height:18px;" />
+                <span style="font-weight:700; color:#111827;">TesaHealth</span>
+            </div>
+            <div style="margin-top:10px;">
+                &copy; 2026 TesaHealth | All rights reserved
+            </div>
+        </footer>
+
+    </div>
+</body>
+
+</html>

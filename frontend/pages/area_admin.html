@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TesaHealth | Admin</title>
+
+  <link rel="icon" href="/assets/img/icono.png" type="image/png" />
+
+  <link rel="stylesheet" href="/css/index.css" />
+  <link rel="stylesheet" href="/css/login-register.css" />
+  <link rel="stylesheet" href="/css/area_admin.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="/" aria-label="Go to TesaHealth home">
+        <img class="brand-icon brand-icon--plain" src="/assets/img/icono.png" alt="TesaHealth icon" />
+        <div class="brand-text">
+          <div class="brand-name brand-name--lg">TesaHealth</div>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/pages/patient_home.html" class="nav-link">Patient</a>
+        <a href="/pages/clinician_home.html" class="nav-link">Clinician</a>
+        <a href="/pages/admin_home.html" class="nav-link active" aria-current="page">Admin</a>
+      </nav>
+
+      <div class="nav-cta">
+        <button id="btnLogout" class="btn btn-ghost" type="button">Logout</button>
+        <button id="btnRefresh" class="btn btn-primary" type="button">Refresh</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="admin">
+    <div class="container admin-grid" id="adminGrid">
+      <!-- Left -->
+      <section class="admin-side" aria-label="Admin overview">
+        <div class="admin-card">
+          <div class="admin-card-head">
+            <h1 class="admin-title">Admin area</h1>
+            <p class="admin-sub">Verify profiles, monitor cases, and view internal stats.</p>
+          </div>
+
+          <div class="admin-profile">
+            <div class="avatar" aria-hidden="true">
+              <span id="avatarLetter">A</span>
+            </div>
+
+            <div class="admin-meta">
+              <div class="admin-name" id="adminName">—</div>
+              <div class="admin-email" id="adminEmail">—</div>
+            </div>
+          </div>
+
+          <div class="admin-alert" role="note">
+            <span class="dot" aria-hidden="true"></span>
+            <span>
+              Internal tool • Access is logged.
+            </span>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <h2 class="panel-title">Admin tools</h2>
+
+          <div class="quick-grid">
+            <button class="quick active" type="button" data-section="dashboard" aria-label="Open dashboard">
+              <div class="quick-title">Dashboard</div>
+              <div class="quick-sub">TesaHealth overview</div>
+            </button>
+
+            <button class="quick" type="button" data-section="verifications" aria-label="Open verifications">
+              <div class="quick-title">Verify accounts</div>
+              <div class="quick-sub">
+                Pending: <strong id="badgePending">0</strong>
+              </div>
+            </button>
+
+            <button class="quick" type="button" data-section="cases" aria-label="Open case oversight">
+              <div class="quick-title">Verify patients cases</div>
+            </button>
+
+            <button class="quick" type="button" data-section="profile" aria-label="Open profile">
+              <div class="quick-title">Edit profile</div>
+              <div class="quick-sub">Update your account</div>
+            </button>
+
+            <button class="quick" type="button" data-section="logs" aria-label="Open audit logs">
+              <div class="quick-title">Audit logs</div>
+              <div class="quick-sub">Trace actions</div>
+            </button>
+
+            <button class="quick" type="button" data-section="users" aria-label="Open users">
+              <div class="quick-title">Users</div>
+              <div class="quick-sub">Search & block</div>
+            </button>
+
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Right -->
+      <section class="admin-main" aria-label="Admin content">
+        <!-- DASHBOARD -->
+        <section id="sectionDashboard" class="panel">
+          <div class="panel-head">
+            <h2 class="panel-title">Dashboard</h2>
+            <p class="panel-sub">Snapshot of verifications and cases (pseudonymized).</p>
+          </div>
+
+          <div class="stats-row">
+            <div class="stat">
+              <div class="stat-label">Clinicians</div>
+              <div id="statClinicians" class="stat-value">—</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Patients</div>
+              <div id="statPatients" class="stat-value">—</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Admins</div>
+              <div id="statAdmins" class="stat-value">—</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Pending verifications</div>
+              <div id="statPending" class="stat-value">—</div>
+            </div>
+          </div>
+
+          <div class="split2" style="margin-top:12px;">
+            <div class="subpanel">
+              <div class="subpanel-title">Cases (Open vs Closed)</div>
+              <div class="chart-box">
+                <canvas id="chartCases"></canvas>
+              </div>
+
+            </div>
+
+            <div class="subpanel">
+              <div class="subpanel-title">Verifications (Pending vs Verified)</div>
+              <div class="chart-box">
+                <canvas id="chartVerifs"></canvas>
+              </div>
+
+            </div>
+          </div>
+
+        </section>
+
+        <!-- VERIFICATIONS -->
+        <section id="sectionVerifications" class="panel is-hidden">
+          <div class="panel-head panel-head-row">
+            <div>
+              <h2 class="panel-title">Verify accounts</h2>
+              <p class="panel-sub">Select a pending profile to review and update status.</p>
+            </div>
+            <div class="panel-actions">
+              <button class="btn btn-ghost" type="button" data-section="dashboard">Back to dashboard</button>
+            </div>
+          </div>
+
+          <div id="verifEmpty" class="empty is-hidden">
+            <div class="empty-title">No pending verifications</div>
+            <div class="empty-sub">Come back later.</div>
+          </div>
+
+          <div class="split2">
+            <div>
+              <div class="subpanel">
+                <div class="subpanel-title">Pending list</div>
+                <div id="verifList" class="rows"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="subpanel">
+                <div class="subpanel-title">Review detail</div>
+                <div id="verifDetail" class="detail muted">Select a profile to review.</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CASES -->
+        <section id="sectionCases" class="panel is-hidden">
+          <div class="panel-head panel-head-row">
+            <div>
+              <h2 class="panel-title">Verify cases</h2>
+              <p class="panel-sub">Search cases by case ID or patient.</p>
+            </div>
+
+            <div class="panel-actions">
+              <input id="caseIdSearch" class="input" type="search" placeholder="Search by Case ID (e.g. 123)" />
+              <input id="patientIdSearch" class="input" type="search"
+                placeholder="Search by PatientProfile ID (e.g. 45)" />
+              <input id="patientNameSearch" class="input" type="search"
+                placeholder="Search by patient name/surname (e.g. Ana García)" />
+              <button id="btnSearchCases" class="btn btn-primary" type="button">Search</button>
+
+              <select id="caseStageFilter" class="select">
+                <option value="all">All</option>
+                <option value="waiting">Waiting</option>
+                <option value="in_review">In review</option>
+                <option value="closed">Closed</option>
+              </select>
+
+              <select id="sortCases" class="select">
+                <option value="desc">Newest first</option>
+                <option value="asc">Oldest first</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="casesEmpty" class="empty is-hidden">
+            <div class="empty-title">No cases found</div>
+            <div class="empty-sub">Nothing to show.</div>
+          </div>
+
+          <div class="split2">
+            <div>
+              <div class="subpanel">
+                <div class="subpanel-title">Case list</div>
+                <div id="casesList" class="rows"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="subpanel">
+                <div class="subpanel-title">Case detail</div>
+                <div id="caseDetail" class="detail muted">Select a case to view details.</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- AUDIT LOGS -->
+        <section id="sectionLogs" class="panel is-hidden">
+          <div class="panel-head panel-head-row">
+            <div>
+              <h2 class="panel-title">Audit logs</h2>
+              <p class="panel-sub">Trace sensitive actions performed inside the platform.</p>
+            </div>
+
+            <div class="panel-actions">
+              <select id="logEntity" class="select">
+                <option value="">All entities</option>
+                <option value="auth">auth</option>
+                <option value="user">user</option>
+                <option value="case">case</option>
+                <option value="admin_profile">admin_profile</option>
+                <option value="clinician_profile">clinician_profile</option>
+              </select>
+
+              <input id="logActorUserId" class="input" type="search" placeholder="Actor userId (e.g. 12)" />
+              <input id="logQ" class="input" type="search" placeholder="Search action text…" />
+              <input id="logFrom" class="input" type="date" />
+              <input id="logTo" class="input" type="date" />
+
+              <button id="btnLoadLogs" class="btn btn-primary" type="button">Load</button>
+            </div>
+          </div>
+
+          <div class="split2">
+            <div>
+              <div class="subpanel">
+                <div class="subpanel-title">Logs</div>
+                <div id="logsList" class="rows"></div>
+
+                <div class="actions" style="margin-top:12px;">
+                  <button id="btnLogsPrev" class="btn btn-ghost" type="button">Prev</button>
+                  <button id="btnLogsNext" class="btn btn-ghost" type="button">Next</button>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="subpanel">
+                <div class="subpanel-title">Detail</div>
+                <div id="logDetail" class="detail muted">Select a log entry.</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- USERS -->
+        <section id="sectionUsers" class="panel is-hidden">
+          <div class="panel-head panel-head-row">
+            <div>
+              <h2 class="panel-title">Users</h2>
+              <p class="panel-sub">Search users and block/unblock accounts.</p>
+            </div>
+
+            <div class="panel-actions">
+              <input id="userSearchQ" class="input" type="search" placeholder="Search: email / name / surname / id" />
+              <button id="btnUserSearch" class="btn btn-primary" type="button">Search</button>
+            </div>
+          </div>
+
+          <div class="split2">
+            <div>
+              <div class="subpanel">
+                <div class="subpanel-title">Results</div>
+                <div id="usersList" class="rows"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="subpanel">
+                <div class="subpanel-title">User detail</div>
+                <div id="userDetail" class="detail muted">Select a user to view details.</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- SECURITY -->
+        <section id="sectionProfile" class="panel is-hidden">
+          <div class="panel-head">
+            <h2 class="panel-title">Edit profile</h2>
+            <p class="panel-sub">Update your account details.</p>
+          </div>
+
+          <!-- Account -->
+          <form id="adminProfileForm" class="subpanel" novalidate>
+            <div class="subpanel-title">Account</div>
+
+            <div class="form-grid">
+              <label class="field">
+                <span class="field-label">Name</span>
+                <input id="apName" class="input" type="text" autocomplete="given-name" required />
+              </label>
+
+              <label class="field">
+                <span class="field-label">Surname</span>
+                <input id="apSurname" class="input" type="text" autocomplete="family-name" required />
+              </label>
+
+              <label class="field" style="grid-column:1/-1;">
+                <span class="field-label">Email (read-only)</span>
+                <input id="apEmail" class="input" type="email" readonly />
+              </label>
+
+              <label class="field" style="grid-column:1/-1;">
+                <span class="field-label">Address</span>
+                <input id="apAddress" class="input" type="text" autocomplete="street-address" required />
+              </label>
+
+              <label class="field">
+                <span class="field-label">Date of birth</span>
+                <input id="apDob" class="input" type="date" required />
+              </label>
+
+              <label class="field">
+                <span class="field-label">Phone</span>
+                <input id="apPhone" class="input" type="tel" autocomplete="tel" required />
+              </label>
+            </div>
+
+            <div class="actions">
+              <button id="btnSaveAdminProfile" class="btn btn-primary" type="submit">
+                Save changes
+              </button>
+            </div>
+          </form>
+
+          <div style="height:1px; background: rgba(18,58,99,0.10); margin: 12px 0;"></div>
+
+          <div class="subpanel">
+            <div class="subpanel-title">Change password</div>
+            <p class="muted" style="margin-top:6px;">
+              We will email you a 6-digit code (10 min).
+            </p>
+
+            <!-- STEP 1 -->
+            <div id="apPwStep1" class="form-grid">
+              <label class="field" style="grid-column:1/-1;">
+                <span class="field-label">New password</span>
+                <input id="apNewPassword" class="input" type="password" minlength="8" autocomplete="new-password"
+                  placeholder="New password" />
+              </label>
+
+              <label class="field" style="grid-column:1/-1;">
+                <span class="field-label">Repeat new password</span>
+                <input id="apNewPassword2" class="input" type="password" minlength="8" autocomplete="new-password"
+                  placeholder="Repeat new password" />
+              </label>
+
+              <div class="actions" style="grid-column:1/-1;">
+                <button id="btnApSendCode" class="btn btn-primary" type="button">Send code</button>
+              </div>
+            </div>
+
+            <!-- STEP 2 -->
+            <div id="apPwStep2" class="form-grid is-hidden">
+              <label class="field" style="grid-column:1/-1;">
+                <span class="field-label">Verification code</span>
+                <input id="apCode" class="input" placeholder="e.g. 483921" autocomplete="one-time-code"
+                  inputmode="numeric" maxlength="6" />
+              </label>
+
+              <div class="actions" style="grid-column:1/-1;">
+                <button id="btnApBackPw" class="btn btn-ghost" type="button">Back</button>
+                <button id="btnApChangePassword" class="btn btn-danger" type="button">Confirm change</button>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="panel" style="margin-top:14px;">
+            <div class="panel-title">Delete account</div>
+            <p class="muted" style="margin:6px 0 14px;">
+              This action disables and anonymizes your account. You will receive a 6-digit code by email to confirm.
+            </p>
+
+            <!-- Step 1 -->
+            <div id="apDelStep1">
+              <button id="btnApSendDeleteCode" class="btn btn-danger" type="button">
+                Send delete code
+              </button>
+            </div>
+
+            <div id="apDelStep2" class="is-hidden" style="margin-top:12px;">
+              <label class="field">
+                <span class="field-label">Enter 6-digit code</span>
+                <input id="apDeleteCode" class="input" type="text" inputmode="numeric" maxlength="6"
+                  placeholder="123456" autocomplete="one-time-code" />
+              </label>
+
+              <div class="actions" style="margin-top:12px;">
+                <button id="btnApConfirmDelete" class="btn btn-danger" type="button">
+                  Confirm delete
+                </button>
+                <button id="btnApBackDelete" class="btn btn-ghost" type="button">
+                  Back
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img class="brand-icon brand-icon--plain" src="/assets/img/icono.png" alt="TesaHealth icon" />
+        <div>
+          <div class="footer-name">TesaHealth</div>
+        </div>
+      </div>
+
+      <div class="footer-links" aria-label="Footer links">
+        <a href="/">Home</a>
+        <a href="/pages/patient_home.html">Patient</a>
+        <a href="/pages/clinician_home.html">Clinician</a>
+        <a href="/pages/admin_home.html">Admin</a>
+        <a href="/pages/login.html">Login</a>
+      </div>
+
+      <div class="footer-copy">© 2026 TesaHealth • All rights reserved</div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" aria-live="polite" aria-atomic="true"></div>
+
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+  <script src="/js/area_admin.js"></script>
+
+</body>
+
+</html>

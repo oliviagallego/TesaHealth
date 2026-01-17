@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TesaHealth | New case</title>
+
+  <link rel="icon" href="/assets/img/icono.png" type="image/png" />
+
+  <link rel="stylesheet" href="/css/index.css" />
+  <link rel="stylesheet" href="/css/new_case.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="/" aria-label="Go to TesaHealth home">
+        <img class="brand-icon brand-icon--plain" src="/assets/img/icono.png" alt="TesaHealth icon" />
+        <div class="brand-text">
+          <div class="brand-name brand-name--lg">TesaHealth</div>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/pages/patient_home.html" class="nav-link active" aria-current="page">Patient</a>
+        <a href="/pages/clinician_home.html" class="nav-link">Clinician</a>
+        <a href="/pages/admin_home.html" class="nav-link">Admin</a>
+      </nav>
+
+      <div class="nav-cta">
+        <a class="btn btn-ghost" href="/pages/area_patient.html">Back</a>
+        <button id="btnLogout" class="btn btn-ghost" type="button">Logout</button>
+        <a class="btn btn-primary" href="/pages/new_case.html">New case</a>
+
+      </div>
+    </div>
+  </header>
+
+  <main class="newcase">
+    <div class="container newcase-grid">
+      <!-- Left-->
+      <section class="card">
+        <div class="card-head">
+          <h1 class="h1">Create a new case</h1>
+          <p class="muted">Add symptoms, answer questions, and generate your educational report.</p>
+          <div class="note">
+            <span class="dot" aria-hidden="true"></span>
+            <span>Warning signs? Call <strong>112</strong>.</span>
+          </div>
+        </div>
+
+        <div class="stepper">
+          <div class="step is-active" data-step="1">1) Symptoms</div>
+          <div class="step" data-step="2">2) Questions</div>
+          <div class="step" data-step="3">3) Results</div>
+        </div>
+
+        <!-- STEP 1 -->
+        <section id="step1" class="step-panel">
+          <h2 class="h2">Symptoms</h2>
+
+          <div class="row">
+            <div class="combo">
+              <input id="symptomQuery" class="input" type="search"
+                placeholder="Search symptom (e.g. fever, headache)..." autocomplete="off" />
+              <div id="symptomDropdown" class="dropdown is-hidden" role="listbox"></div>
+            </div>
+
+            <button id="btnSymptomSearch" class="btn btn-primary" type="button">Search</button>
+          </div>
+
+
+          <div id="symptomSearchHint" class="helper muted">
+            Type a symptom and search. Then add at least one symptom to start the interview.
+          </div>
+
+          <div id="symptomResults" class="results"></div>
+
+          <div class="divider"></div>
+
+          <h3 class="h3">Selected</h3>
+          <div id="selectedSymptoms" class="selected"></div>
+
+          <div class="actions">
+            <button id="btnStartInterview" class="btn btn-primary" type="button" disabled>Start interview</button>
+          </div>
+        </section>
+
+        <!-- STEP 2 -->
+        <section id="step2" class="step-panel is-hidden">
+          <h2 class="h2">Questions</h2>
+          <p class="muted">Answer the questions to refine the case.</p>
+
+          <div id="questionBox" class="question-box"></div>
+
+          <div class="actions">
+            <button id="btnSubmitAnswer" class="btn btn-primary" type="button">Submit answer</button>
+            <button id="btnFinish" class="btn btn-ghost" type="button">Finish & generate results</button>
+          </div>
+        </section>
+
+        <!-- STEP 3 -->
+        <section id="step3" class="step-panel is-hidden">
+          <h2 class="h2">Results</h2>
+
+          <div id="resultsBox" class="results-box"></div>
+
+          <div class="actions">
+            <a class="btn btn-primary" href="/pages/case_history.html">Go to my cases</a>
+            <a class="btn btn-ghost" href="/pages/new_case.html">Create another case</a>
+          </div>
+        </section>
+      </section>
+
+      <!-- Right -->
+      <aside class="card">
+        <h2 class="h2">Live summary</h2>
+
+        <div class="kv">
+          <div class="k">Case ID</div>
+          <div class="v" id="caseIdLabel">—</div>
+        </div>
+        <div class="kv">
+          <div class="k">Emergency evidence</div>
+          <div class="v" id="emergencyLabel">—</div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img class="brand-icon brand-icon--plain" src="/assets/img/icono.png" alt="TesaHealth icon" />
+        <div>
+          <div class="footer-name">TesaHealth</div>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/pages/patient_home.html">Patient</a>
+        <a href="/pages/clinician_home.html">Clinician</a>
+        <a href="/pages/admin_home.html">Admin</a>
+      </div>
+      <div class="footer-copy">© 2026 TesaHealth • All rights reserved</div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="/js/new_case.js"></script>
+</body>
+
+</html>

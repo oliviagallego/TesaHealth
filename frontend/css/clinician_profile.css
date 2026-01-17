@@ -1,0 +1,46 @@
+.pp-grid {
+  grid-template-columns: 1fr !important;
+  gap: 16px;
+}
+
+.auth-card {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.auth-side {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.pp-divider {
+  height: 1px;
+  background: rgba(18, 58, 99, 0.10);
+  margin: 14px 0;
+}
+
+.pp-actions {
+  margin-top: 14px;
+}
+
+.pp-pw {
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.is-hidden {
+  display: none;
+}
+
+#email[readonly],
+#verification_status[readonly] {
+  opacity: .85;
+  cursor: not-allowed;
+}
+
+@media (max-width: 980px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}

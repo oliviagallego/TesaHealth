@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TesaHealth | Clinician • Response history</title>
+
+  <link rel="icon" href="/assets/img/icono.png" type="image/png" />
+
+  <link rel="stylesheet" href="/css/index.css" />
+  <link rel="stylesheet" href="/css/login-register.css" />
+  <link rel="stylesheet" href="/css/area_clinician.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="/" aria-label="Go to TesaHealth home">
+        <img class="brand-icon brand-icon--plain" src="/assets/img/icono.png" alt="TesaHealth icon" />
+        <div class="brand-text">
+          <div class="brand-name brand-name--lg">TesaHealth</div>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/pages/patient_home.html" class="nav-link">Patient</a>
+        <a href="/pages/clinician_home.html" class="nav-link active" aria-current="page">Clinician</a>
+        <a href="/pages/admin_home.html" class="nav-link">Admin</a>
+      </nav>
+
+      <div class="nav-cta">
+        <a class="btn btn-ghost" href="/pages/area_clinician.html">Back</a>
+        <button id="btnLogout" class="btn btn-ghost" type="button">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="clinician">
+    <div class="container clinician-grid">
+      <!-- Left -->
+      <section class="clinician-side" aria-label="Clinician menu">
+        <div class="clinician-card">
+          <div class="clinician-card-head">
+            <h1 class="clinician-title">Response history</h1>
+            <p class="clinician-sub">See your submissions and final consensus when available.</p>
+          </div>
+
+          <div class="clinician-profile">
+            <div class="avatar" aria-hidden="true"><span id="avatarLetter">C</span></div>
+            <div class="clinician-meta">
+              <div class="clinician-name" id="clinicianName">—</div>
+              <div class="clinician-email" id="clinicianEmail">—</div>
+            </div>
+          </div>
+
+          <div class="quick-grid" style="margin-top:14px">
+            <a class="quick" href="/pages/area_clinician.html">
+              <div class="quick-title">Dashboard</div>
+              <div class="quick-sub">Overview + shortcuts</div>
+            </a>
+
+            <a class="quick" href="/pages/clinician_answer_mir.html">
+              <div class="quick-title">Answer MIR</div>
+              <div class="quick-sub">Pending queue + submit</div>
+            </a>
+
+            <a class="quick" href="/pages/clinician_profile.html">
+              <div class="quick-title">Edit profile</div>
+              <div class="quick-sub">Account & credentials</div>
+            </a>
+          </div>
+
+          <div class="clinician-alert" role="note" aria-label="Disclaimer">
+            <span class="dot" aria-hidden="true"></span>
+            <span>For emergencies, call <strong>112</strong>.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right -->
+      <section class="clinician-main" aria-label="History workbench">
+        <!-- Overview arriba -->
+        <section class="panel">
+          <div class="panel-head panel-head-row">
+            <div>
+              <h2 class="panel-title">Overview</h2>
+              <p class="panel-sub">Your current queue and activity.</p>
+            </div>
+            <div class="panel-actions">
+              <button id="btnRefresh" class="btn btn-ghost" type="button">Refresh</button>
+            </div>
+          </div>
+
+          <div class="stats-row">
+            <div class="stat">
+              <div class="stat-label">Pending MIR</div>
+              <div id="statPending" class="stat-value">—</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Answered</div>
+              <div id="statAnswered" class="stat-value">—</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Last answered</div>
+              <div id="statLastAnswered" class="stat-value">—</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Earnings</div>
+              <div id="statScope" class="stat-value">—</div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- History panel -->
+        <section class="panel">
+          <div class="panel-head panel-head-row">
+            <div>
+              <h2 class="panel-title">Your response history</h2>
+              <p class="panel-sub">Open one to see details and results.</p>
+            </div>
+            <div class="panel-actions">
+              <input id="searchHistory" class="input" placeholder="Search history…" />
+            </div>
+          </div>
+
+          <div class="split">
+            <div class="col">
+              <div id="historyEmpty" class="empty is-hidden">
+                <div class="empty-title">No answers yet</div>
+                <div class="empty-sub">When you submit answers, they’ll appear here.</div>
+              </div>
+              <div id="historyList" class="items"></div>
+            </div>
+
+            <div class="col">
+              <div id="historyDetail" class="case-detail"></div>
+            </div>
+          </div>
+        </section>
+      </section>
+    </div>
+  </main>
+
+  <div id="toast" class="toast" aria-live="polite" aria-atomic="true"></div>
+  <script src="/js/clinician_history.js"></script>
+</body>
+
+</html>

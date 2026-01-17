@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TesaHealth | Clinician</title>
+
+  <link rel="icon" href="/assets/img/icono.png" type="image/png" />
+
+  <link rel="stylesheet" href="/css/index.css" />
+  <link rel="stylesheet" href="/css/login-register.css" />
+  <link rel="stylesheet" href="/css/area_clinician.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="/" aria-label="Go to TesaHealth home">
+        <img class="brand-icon brand-icon--plain" src="/assets/img/icono.png" alt="TesaHealth icon" />
+        <div class="brand-text">
+          <div class="brand-name brand-name--lg">TesaHealth</div>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/pages/patient_home.html" class="nav-link">Patient</a>
+        <a href="/pages/clinician_home.html" class="nav-link active" aria-current="page">Clinician</a>
+        <a href="/pages/admin_home.html" class="nav-link">Admin</a>
+      </nav>
+
+      <div class="nav-cta">
+        <button id="btnLogout" class="btn btn-ghost" type="button">Logout</button>
+        <a class="btn btn-primary" href="/pages/clinician_answer_mir.html">Answer MIR</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="clinician">
+    <div class="container clinician-grid">
+      <!-- Left -->
+      <section class="clinician-side" aria-label="Clinician overview">
+        <div class="clinician-card">
+          <div class="clinician-card-head">
+            <h1 class="clinician-title">Clinician area</h1>
+            <p class="clinician-sub">Answer MIR questions, track your history, and manage your profile.</p>
+          </div>
+
+          <div class="clinician-profile">
+            <div class="avatar" aria-hidden="true">
+              <span id="avatarLetter">C</span>
+            </div>
+
+            <div class="clinician-meta">
+              <div class="clinician-name" id="clinicianName">—</div>
+              <div class="clinician-email" id="clinicianEmail">—</div>
+            </div>
+          </div>
+
+          <div class="clinician-alert" role="note" aria-label="Disclaimer">
+            <span class="dot" aria-hidden="true"></span>
+            <span>For emergencies, call <strong>112</strong>.</span>
+          </div>
+        </div>
+
+        <div class="clinician-card">
+          <div class="panel-head">
+            <h2 class="panel-title">Main actions</h2>
+            <p class="panel-sub">Quick shortcuts for your daily tasks.</p>
+          </div>
+
+          <div class="quick-grid">
+            <a class="quick" href="/pages/clinician_answer_mir.html" aria-label="Answer MIR questions">
+              <div class="quick-title">Answer MIR questions</div>
+              <div class="quick-sub">Review assigned cases and submit your choice</div>
+            </a>
+
+            <a class="quick" href="/pages/clinician_history.html" aria-label="Response history">
+              <div class="quick-title">Response history</div>
+              <div class="quick-sub">View your submitted answers</div>
+            </a>
+
+            <a class="quick" href="/pages/clinician_profile.html" aria-label="Edit profile">
+              <div class="quick-title">Edit profile</div>
+              <div class="quick-sub">Update credentials and account data</div>
+            </a>
+
+            <button id="btnReportIssue" class="quick quick-report" type="button" aria-label="Report an issue">
+              <div class="quick-title">Report an issue</div>
+              <div class="quick-sub">Contact support by email</div>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right -->
+      <section class="clinician-main" aria-label="Clinician dashboard">
+        <!-- Overview -->
+        <section class="panel">
+          <div class="panel-head panel-head-row">
+            <div>
+              <h2 class="panel-title">Overview</h2>
+              <p class="panel-sub">A snapshot of your clinical activity.</p>
+            </div>
+
+            <div class="panel-actions">
+              <button id="btnRefresh" class="btn btn-ghost" type="button">Refresh</button>
+            </div>
+          </div>
+
+          <div class="stats-row" aria-label="Clinician stats">
+            <div class="stat">
+              <div class="stat-label">Pending MIR</div>
+              <div id="statPending" class="stat-value">—</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">Answered</div>
+              <div id="statAnswered" class="stat-value">—</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">Last answered</div>
+              <div id="statLastAnswered" class="stat-value">—</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">Earnings</div>
+              <div id="statScope" class="stat-value">—</div>
+            </div>
+
+          </div>
+        </section>
+
+
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img class="brand-icon brand-icon--plain" src="/assets/img/icono.png" alt="TesaHealth icon" />
+        <div>
+          <div class="footer-name">TesaHealth</div>
+        </div>
+      </div>
+
+      <div class="footer-links" aria-label="Footer links">
+        <a href="/">Home</a>
+        <a href="/pages/patient_home.html">Patient</a>
+        <a href="/pages/clinician_home.html">Clinician</a>
+        <a href="/pages/admin_home.html">Admin</a>
+        <a href="/pages/login.html">Login</a>
+        <a href="/pages/register.html">Get started</a>
+      </div>
+
+      <div class="footer-copy">© 2026 TesaHealth • All rights reserved</div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="/js/area_clinician.js"></script>
+</body>
+
+</html>

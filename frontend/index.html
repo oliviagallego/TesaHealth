@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TesaHealth | Home</title>
+
+  <link rel="icon" href="/assets/img/icono.png" type="image/png" />
+
+  <link rel="stylesheet" href="/css/index.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="/" aria-label="Go to TesaHealth home">
+        <img class="brand-icon" src="/assets/img/icono.png" alt="TesaHealth icon" />
+        <div class="brand-text">
+          <div class="brand-name">TesaHealth</div>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="/" class="nav-link active" aria-current="page">Home</a>
+        <a href="/pages/patient_home.html" class="nav-link">Patient</a>
+        <a href="/pages/clinician_home.html" class="nav-link">Clinician</a>
+        <a href="/pages/admin_home.html" class="nav-link">Admin</a>
+      </nav>
+
+      <div class="nav-cta">
+        <a class="btn btn-ghost" href="/pages/login.html">Login</a>
+        <a class="btn btn-primary" href="/pages/register.html">Get started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero hero-image" aria-label="Intro">
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <h1>
+          Not sure what to do about your symptoms?
+          <span class="accent">Get clear next steps.</span>
+        </h1>
+
+        <p class="lead">
+          TesaHealth helps you understand your symptoms and choose the safest action - self-care, book a visit, or seek
+          urgent care - using structured medical reasoning inspired by MIR-style thinking and reviewed by clinicians.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/pages/register.html">Get started</a>
+          <a class="btn btn-ghost" href="/pages/login.html">Login</a>
+        </div>
+
+        <div class="hero-note" role="note" aria-label="Emergency disclaimer">
+          <span class="dot" aria-hidden="true"></span>
+          <span>
+            Warning signs (chest pain, severe shortness of breath, stroke symptoms, heavy bleeding)?
+            Call <strong>112</strong>.
+          </span>
+        </div>
+
+      </div>
+
+
+    </div>
+  </section>
+
+  <main>
+    <!-- OVERVIEW -->
+    <section class="section" aria-label="Overview">
+      <div class="container">
+        <div class="section-head">
+          <h2>A safer path from symptoms to next steps</h2>
+          <p>
+            TesaHealth combines structured symptom collection, AI-assisted reasoning, and clinician verification to
+            provide clear orientation: what it could be, how urgent it seems, and what to do next.
+          </p>
+        </div>
+
+        <!-- cards -->
+        <div class="cards-3 overview-cards">
+          <article class="info-card">
+            <h3>Orientation, not prescriptions</h3>
+            <p>Clear next steps and urgency - without treatment instructions or dosing.</p>
+          </article>
+
+          <article class="info-card">
+            <h3>Clinician-verified workflow</h3>
+            <p>Clinicians review cases and produce a consensus-based result.</p>
+          </article>
+
+          <article class="info-card">
+            <h3>Traceable and accountable</h3>
+            <p>Audit trail + stored AI artifacts (vignette, differentials, triage) for transparency.</p>
+          </article>
+        </div>
+
+        <!-- Stats -->
+        <aside class="stats-card" aria-label="Live platform stats">
+          <div class="card">
+            <div class="card-header">
+              <h3>Live stats</h3>
+              <p class="card-sub">A snapshot of platform activity.</p>
+            </div>
+
+            <div class="stats-grid">
+              <div class="stat">
+                <div class="stat-label">Total users</div>
+                <div id="statUsers" class="stat-value">—</div>
+              </div>
+
+              <div class="stat">
+                <div class="stat-label">Cases created</div>
+                <div id="statCases" class="stat-value">—</div>
+              </div>
+
+              <div class="stat">
+                <div class="stat-label">Patients</div>
+                <div id="statPatients" class="stat-value">—</div>
+              </div>
+
+              <div class="stat">
+                <div class="stat-label">Verified clinicians</div>
+                <div id="statClinicians" class="stat-value">—</div>
+              </div>
+            </div>
+
+            <div class="mini-proof">
+              <strong>Note:</strong> Educational guidance only. Not a diagnosis or prescription.
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section alt" aria-label="Why">
+      <div class="container">
+        <div class="split">
+          <div class="split-copy">
+            <h2>Health decisions shouldn’t feel like guessing</h2>
+            <p>
+              Searching symptoms online often increases anxiety and confusion. TesaHealth replaces “random browsing”
+              with a structured interview and a safety-first pathway, backed by clinician oversight.
+            </p>
+
+            <div class="bullets">
+              <div class="bullet">Ask the right questions (structured intake)</div>
+              <div class="bullet">Prioritize red flags and urgency</div>
+              <div class="bullet">Deliver clear, actionable next steps</div>
+            </div>
+          </div>
+
+          <div class="split-card">
+            <div class="card">
+              <h3 class="split-card-title">What you get</h3>
+              <div class="pill-grid">
+                <span class="pill">Likely category</span>
+                <span class="pill">Urgency level</span>
+                <span class="pill">Next steps</span>
+                <span class="pill">Plain-language explanation</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section" aria-label="How it works">
+      <div class="container">
+        <div class="section-head">
+          <h2>How it works</h2>
+          <p>From symptom intake to clinician-verified orientation, in a clean, traceable workflow.</p>
+        </div>
+
+        <div class="how">
+          <article class="how-step">
+            <div class="how-badge">01</div>
+            <div class="how-body">
+              <h3>Describe your symptoms</h3>
+              <p>Answer a focused set of questions (onset, intensity, context) in a guided flow.</p>
+            </div>
+          </article>
+
+          <article class="how-step">
+            <div class="how-badge">02</div>
+            <div class="how-body">
+              <h3>Guided interview (Infermedica)</h3>
+              <p>Adaptive follow-up questions create a structured clinical snapshot.</p>
+            </div>
+          </article>
+
+          <article class="how-step">
+            <div class="how-badge">03</div>
+            <div class="how-body">
+              <h3>MIR-style reasoning support (GPT)</h3>
+              <p>Generates a vignette and differential options to support clinician review.</p>
+            </div>
+          </article>
+
+          <article class="how-step">
+            <div class="how-badge">04</div>
+            <div class="how-body">
+              <h3>Clinician review + consensus</h3>
+              <p>Clinicians review independently and the system aggregates results into a final orientation.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="cta-box">
+          <div>
+            <h3>Start in minutes</h3>
+            <p>Create an account and use TesaHealth as a patient (clinician/admin roles require approval).</p>
+          </div>
+          <div class="cta-actions">
+            <a class="btn btn-primary" href="/pages/register.html">Get started</a>
+            <a class="btn btn-ghost" href="/pages/login.html">Login</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTALS -->
+    <section class="section alt" aria-label="Portals">
+      <div class="container">
+        <div class="section-head">
+          <h2>Portals</h2>
+          <p>Access the platform based on your role. Clinician/Admin require verification and approval.</p>
+        </div>
+
+        <div class="cards-3">
+          <!-- Patient -->
+          <article class="portal-card2">
+            <div class="portal-head2">
+              <div class="portal-title2">Patient</div>
+              <a class="portal-cta2" href="/pages/patient_home.html">Go to patient portal →</a>
+            </div>
+
+            <div class="portal-reveal2" aria-hidden="true">
+              <ul>
+                <li>Consent & privacy controls</li>
+                <li>Symptom interview + case history</li>
+                <li>Emergency shortcut (112)</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Clinician -->
+          <article class="portal-card2">
+            <div class="portal-head2">
+              <div class="portal-title2">Clinician</div>
+              <a class="portal-cta2" href="/pages/clinician_home.html">Go to clinician portal →</a>
+            </div>
+
+            <div class="portal-reveal2" aria-hidden="true">
+              <ul>
+                <li>Verified access (approval required)</li>
+                <li>Review queue + MIR-style support</li>
+                <li>Submit urgency + assessment</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Admin -->
+          <article class="portal-card2">
+            <div class="portal-head2">
+              <div class="portal-title2">Admin</div>
+              <a class="portal-cta2" href="/pages/admin_home.html">Go to admin portal →</a>
+            </div>
+
+            <div class="portal-reveal2" aria-hidden="true">
+              <ul>
+                <li>Approve clinician/admin accounts</li>
+                <li>Role & verification management</li>
+                <li>Case oversight</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- REAL-LIFE  -->
+    <section class="section" aria-label="Real-life moments">
+      <div class="container">
+        <div class="section-head">
+          <h2>Built for real-life moments</h2>
+          <p>Designed for the situations that most often create uncertainty, with safety-first guidance.</p>
+        </div>
+
+        <div class="moments">
+          <article class="moment">
+            <h3>“Is this urgent?”</h3>
+            <p>Spot red flags early and understand when you should seek urgent care.</p>
+            <div class="moment-tags">
+              <span class="tag">Chest discomfort</span>
+              <span class="tag">Breathing issues</span>
+              <span class="tag">Neurologic signs</span>
+            </div>
+          </article>
+
+          <article class="moment">
+            <h3>Night-time uncertainty</h3>
+            <p>When clinics are closed and you need a clear plan instead of endless searching.</p>
+            <div class="moment-tags">
+              <span class="tag">Fever</span>
+              <span class="tag">Pain</span>
+              <span class="tag">Vomiting</span>
+            </div>
+          </article>
+
+          <article class="moment">
+            <h3>When to book a visit</h3>
+            <p>Know the right timing for primary care vs. a faster appointment window.</p>
+            <div class="moment-tags">
+              <span class="tag">Persistent symptoms</span>
+              <span class="tag">Follow-up</span>
+              <span class="tag">Monitoring</span>
+            </div>
+          </article>
+
+          <article class="moment">
+            <h3>Support for medical deserts</h3>
+            <p>
+              Helpful for rural or underserved areas by offering structured guidance when access to clinicians is
+              limited,
+              while still encouraging urgent care when red flags appear.
+            </p>
+            <div class="moment-tags">
+              <span class="tag">Rural areas</span>
+              <span class="tag">Limited access</span>
+              <span class="tag">Safety-first</span>
+            </div>
+          </article>
+
+          <article class="moment">
+            <h3>Reducing waiting lists</h3>
+            <p>
+              By triaging safely and clarifying urgency, it can reduce unnecessary visits and help prioritize patients
+              who
+              need faster assessment.
+            </p>
+            <div class="moment-tags">
+              <span class="tag">Prioritization</span>
+              <span class="tag">Triage</span>
+              <span class="tag">Efficiency</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- COLLABORATION -->
+    <section class="section alt" aria-label="Collaboration">
+      <div class="container">
+        <div class="section-head">
+          <h2>Collaboration</h2>
+          <p>Building with academic rigor and validated clinical tooling.</p>
+        </div>
+
+        <div class="collab">
+          <a class="collab-card" href="#" aria-label="Infermedica">
+            <img class="collab-img" src="/assets/img/infermedica_logo.png" alt="Infermedica icon" />
+            <div class="collab-text">
+              <h3>Infermedica</h3>
+              <p>Adaptive interview engine used for structured symptom intake and triage signals.</p>
+            </div>
+          </a>
+
+          <a class="collab-card" href="#" aria-label="Chat GPT">
+            <img class="collab-img" src="/assets/img/ChatGPT-Logo.png" alt="Chat GPT icon" />
+            <div class="collab-text">
+              <h3>OpenAI (GPT)</h3>
+              <p>Generative AI used to create MIR-style educational vignettes and support clinician review.</p>
+            </div>
+          </a>
+
+          <a class="collab-card" href="#" aria-label="University CEU">
+            <img class="collab-img" src="/assets/img/ceu_logo.png" alt="CEU San Pablo icon" />
+            <div class="collab-text">
+              <h3>Universidad CEU San Pablo</h3>
+              <p>Academic project developed as a Bachelor Thesis with a safety-first design approach.</p>
+            </div>
+          </a>
+
+
+        </div>
+
+        <p class="tiny-note">
+          Universidad CEU - San Pablo (Bachelor Thesis context).
+        </p>
+      </div>
+    </section>
+
+    <!-- AUTHORS -->
+    <section class="section alt" aria-label="Authors">
+      <div class="container">
+        <div class="section-head">
+          <h2>Authors</h2>
+          <p>Academic thesis team and supervision.</p>
+        </div>
+
+        <div class="authors-grid">
+          <!-- Student -->
+          <article class="author-card">
+            <div class="author-role">Student of the thesis</div>
+
+            <div class="author-row">
+              <img class="author-photo" src="/assets/img/olivia_gallego.jpeg" alt="Olivia Gallego Toscano" />
+              <div class="author-text">
+                <div class="author-name">Olivia Gallego Toscano</div>
+                <div class="author-meta">Universidad CEU San Pablo</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Tutor -->
+          <article class="author-card">
+            <div class="author-role">Tutor of the thesis</div>
+
+            <div class="author-row">
+              <div class="author-avatar" aria-hidden="true">AS</div>
+              <div class="author-text">
+                <div class="author-name">Álvaro Sánchez Picot</div>
+                <div class="author-meta">Thesis supervisor</div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="mini-proof">
+          <strong>Note:</strong> This project is part of a Bachelor Thesis.
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Contact -->
+    <section class="section" aria-label="Contact">
+      <div class="container">
+        <div class="section-head">
+          <h2>Contact</h2>
+          <p>For technical support and thesis-related questions.</p>
+        </div>
+
+        <div class="contact-grid contact-main">
+          <a class="contact-card" href="mailto:tesahealth.tfg@gmail.com" aria-label="Email TesaHealth">
+            <img class="contact-icon" src="/assets/img/icono_email.png" alt="" aria-hidden="true" />
+            <div class="contact-text">
+              <div class="contact-title">Email</div>
+              <div class="contact-value">tesahealth.tfg@gmail.com</div>
+            </div>
+          </a>
+
+          <a class="contact-card" href="tel:+34912345678" aria-label="Call TesaHealth">
+            <img class="contact-icon" src="/assets/img/icono_tel.png" alt="" aria-hidden="true" />
+            <div class="contact-text">
+              <div class="contact-title">Phone</div>
+              <div class="contact-value">+34 912 345 678</div>
+            </div>
+          </a>
+
+          <a class="contact-card" aria-label="Address">
+            <img class="contact-icon" src="/assets/img/icono_dir.png" alt="" aria-hidden="true" />
+            <div class="contact-text">
+              <div class="contact-title">Address</div>
+              <div class="contact-value">Calle de la Universidad, 123, Madrid</div>
+            </div>
+          </a>
+        </div>
+
+        <div class="contact-grid contact-meta" aria-label="Safety information">
+          <div class="contact-pill">
+            <div class="pill-title">Disclaimer</div>
+            <div class="pill-text">Educational use only. Does not replace medical advice.</div>
+          </div>
+
+          <div class="contact-pill contact-pill-danger">
+            <div class="pill-title">Emergencies</div>
+            <div class="pill-text">Spain: <strong>112</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <img class="brand-icon" src="/assets/img/icono.png" alt="TesaHealth icon" />
+          <div>
+            <div class="footer-name">TesaHealth</div>
+          </div>
+        </div>
+
+        <div class="footer-links" aria-label="Footer links">
+          <a href="/">Home</a>
+          <a href="/pages/patient_home.html">Patient</a>
+          <a href="/pages/clinician_home.html">Clinician</a>
+          <a href="/pages/admin_home.html">Admin</a>
+          <a href="/pages/login.html">Login</a>
+          <a href="/pages/register.html">Get started</a>
+        </div>
+
+        <div class="footer-copy">© 2026 TesaHealth • All rights reserved</div>
+      </div>
+    </footer>
+
+    <script src="/js/index.js"></script>
+</body>
+
+</html>

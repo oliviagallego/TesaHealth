@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TesaHealth | Patient</title>
+
+  <link rel="icon" href="/assets/img/icono.png" type="image/png" />
+  <link rel="stylesheet" href="/css/index.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="/" aria-label="Go to TesaHealth home">
+        <img class="brand-icon" src="/assets/img/icono.png" alt="TesaHealth icon" />
+        <div class="brand-text">
+          <div class="brand-name">TesaHealth</div>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/pages/patient_home.html" class="nav-link active" aria-current="page">Patient</a>
+        <a href="/pages/clinician_home.html" class="nav-link">Clinician</a>
+        <a href="/pages/admin_home.html" class="nav-link">Admin</a>
+      </nav>
+
+      <div class="nav-cta">
+        <a class="btn btn-ghost" href="/pages/login.html?role=PATIENT&next=/pages/area_patient.html">Login</a>
+        <a class="btn btn-primary" href="/pages/register.html?role=PATIENT">Get started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero hero-image hero-patient" aria-label="Patient intro">
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <h1>
+          Understand your symptoms.
+          <span class="accent">AI guidance, backed by clinicians.</span>
+        </h1>
+
+        <p class="lead">
+          TesaHealth helps you structure symptoms through a guided interview and produces an educational report.
+          Your case is reviewed by verified clinicians to reach a consensus outcome.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/pages/register.html?role=PATIENT">Create my first case</a>
+          <a class="btn btn-ghost" href="#how">How it works</a>
+        </div>
+
+        <div class="hero-note" role="note" aria-label="Emergency disclaimer">
+          <span class="dot" aria-hidden="true"></span>
+          <span>
+            Warning signs? Call <strong>112</strong>. TesaHealth is educational and not an emergency service.
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <!-- OVERVIEW -->
+    <section class="section" aria-label="Patient overview">
+      <div class="container">
+        <div class="section-head">
+          <h2>Why patients use TesaHealth</h2>
+          <p>
+            A clear, structured way to explain what you feel, plus guidance that combines AI and human review.
+          </p>
+        </div>
+
+        <div class="cards-3 overview-cards">
+          <article class="info-card">
+            <h3>Guided symptom interview</h3>
+            <p>Answer focused questions so your case is complete, clear, and easy to review.</p>
+          </article>
+
+          <article class="info-card">
+            <h3>AI + clinician consensus</h3>
+            <p>AI helps draft a structured report, then verified clinicians review and agree on an outcome.</p>
+          </article>
+
+          <article class="info-card">
+            <h3>Next steps & urgency</h3>
+            <p>Get patient-friendly guidance and an urgency level (e.g., self-care vs. seek care soon).</p>
+          </article>
+        </div>
+
+        <aside class="stats-card" aria-label="Patient promise">
+          <div class="card">
+            <div class="card-header">
+              <h3>What you get (and what you don’t)</h3>
+              <p class="card-sub">Educational guidance designed to support, not replace, a doctor.</p>
+            </div>
+
+            <div class="stats-grid">
+              <div class="stat">
+                <div class="stat-label">You get</div>
+                <div class="stat-value">Structured symptom summary</div>
+              </div>
+              <div class="stat">
+                <div class="stat-label">You get</div>
+                <div class="stat-value">Urgency level + next steps</div>
+              </div>
+              <div class="stat">
+                <div class="stat-label">You get</div>
+                <div class="stat-value">Downloadable PDF report</div>
+              </div>
+              <div class="stat">
+                <div class="stat-label">You don’t</div>
+                <div class="stat-value">Diagnosis, prescriptions, emergencies</div>
+              </div>
+            </div>
+
+            <div class="mini-proof">
+              <strong>Important:</strong> The report is educational and may help you prepare for a real consultation.
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="section" aria-label="How it works for patients">
+      <div class="container">
+        <div class="section-head">
+          <h2>How it works</h2>
+          <p>A simple flow: interview → AI draft → clinician review → your report.</p>
+        </div>
+
+        <div class="how">
+          <article class="how-step">
+            <div class="how-badge">01</div>
+            <div class="how-body">
+              <h3>Create a case</h3>
+              <p>Add your symptoms and answer short questions to build a structured case.</p>
+            </div>
+          </article>
+
+          <article class="how-step">
+            <div class="how-badge">02</div>
+            <div class="how-body">
+              <h3>AI prepares the draft</h3>
+              <p>AI organizes your information and generates an educational summary and suggested differentials.</p>
+            </div>
+          </article>
+
+          <article class="how-step">
+            <div class="how-badge">03</div>
+            <div class="how-body">
+              <h3>Clinicians review and reach consensus</h3>
+              <p>Verified clinicians review your case and agree on an outcome (diagnosis option + urgency).</p>
+            </div>
+          </article>
+
+          <article class="how-step">
+            <div class="how-badge">04</div>
+            <div class="how-body">
+              <h3>Read your report & download PDF</h3>
+              <p>See your patient-friendly explanation, next steps, and download the PDF for your appointment.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="cta-box">
+          <div>
+            <h3>Ready to start?</h3>
+            <p>Create your first case in minutes. You can return later to see the clinician-reviewed report.</p>
+          </div>
+          <div class="cta-actions">
+            <a class="btn btn-primary" href="/pages/register.html?role=PATIENT">Get started</a>
+            <a class="btn btn-ghost" href="/pages/login.html?role=PATIENT&next=/pages/new_case.html">I already have an account</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST & SAFETY -->
+    <section class="section alt" aria-label="Trust and safety">
+      <div class="container">
+        <div class="section-head">
+          <h2>Trust, safety & privacy</h2>
+          <p>Designed to be helpful, careful, and transparent.</p>
+        </div>
+
+        <div class="cards-3">
+          <article class="info-card">
+            <h3>Human-backed</h3>
+            <p>Results are based on clinician consensus, not AI alone, to reduce unsafe or misleading outputs.</p>
+          </article>
+
+          <article class="info-card">
+            <h3>Emergency-aware</h3>
+            <p>If warning signs appear, the platform emphasizes urgent care pathways (e.g., call 112).</p>
+          </article>
+
+          <article class="info-card">
+            <h3>Privacy-first design</h3>
+            <p>Role-based access and auditability for sensitive actions. You control your account and can delete it.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" aria-label="Patient FAQ">
+      <div class="container">
+        <div class="section-head">
+          <h2>FAQ</h2>
+          <p>Quick answers for patients.</p>
+        </div>
+
+        <div class="card">
+          <details>
+            <summary><strong>Is TesaHealth only AI?</strong></summary>
+            <p>
+              No. AI helps structure the information, but the final outcome is reviewed by verified clinicians who
+              reach a consensus.
+            </p>
+          </details>
+
+          <details>
+            <summary><strong>Is this a medical diagnosis?</strong></summary>
+            <p>
+              No. It is educational guidance. Always consult a licensed professional for diagnosis and treatment.
+              If you suspect an emergency, call 112.
+            </p>
+          </details>
+
+          <details>
+            <summary><strong>How long does clinician review take?</strong></summary>
+            <p>
+              It depends on clinician availability and case load. You can leave and come back later: your case stays in your history.
+            </p>
+          </details>
+
+          <details>
+            <summary><strong>Can I download my report?</strong></summary>
+            <p>Yes. Once consensus is completed, you can download a PDF report for your appointment.</p>
+          </details>
+
+          <details>
+            <summary><strong>Can I find nearby hospitals?</strong></summary>
+            <p>Yes. Use the “Find hospitals” tool to locate hospitals near you in Spain and open directions.</p>
+          </details>
+
+          <details>
+            <summary><strong>Can I delete my account?</strong></summary>
+            <p>Yes. You can request a deletion code and confirm deletion from your profile settings.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" aria-label="Contact">
+      <div class="container">
+        <div class="section-head">
+          <h2>Contact</h2>
+          <p>For technical support and thesis-related questions.</p>
+        </div>
+
+        <div class="contact-grid contact-main">
+          <a class="contact-card" href="mailto:tesahealth.tfg@gmail.com" aria-label="Email TesaHealth">
+            <img class="contact-icon" src="/assets/img/icono_email.png" alt="" aria-hidden="true" />
+            <div class="contact-text">
+              <div class="contact-title">Email</div>
+              <div class="contact-value">tesahealth.tfg@gmail.com</div>
+            </div>
+          </a>
+
+          <a class="contact-card" href="tel:+34912345678" aria-label="Call TesaHealth">
+            <img class="contact-icon" src="/assets/img/icono_tel.png" alt="" aria-hidden="true" />
+            <div class="contact-text">
+              <div class="contact-title">Phone</div>
+              <div class="contact-value">+34 912 345 678</div>
+            </div>
+          </a>
+
+          <a class="contact-card" aria-label="Address">
+            <img class="contact-icon" src="/assets/img/icono_dir.png" alt="" aria-hidden="true" />
+            <div class="contact-text">
+              <div class="contact-title">Address</div>
+              <div class="contact-value">Calle de la Universidad, 123, Madrid</div>
+            </div>
+          </a>
+        </div>
+
+        <div class="contact-grid contact-meta" aria-label="Safety information">
+          <div class="contact-pill">
+            <div class="pill-title">Disclaimer</div>
+            <div class="pill-text">Educational use only. Does not replace medical advice.</div>
+          </div>
+
+          <div class="contact-pill contact-pill-danger">
+            <div class="pill-title">Emergency</div>
+            <div class="pill-text">If warning signs appear, call <strong>112</strong>.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <img class="brand-icon" src="/assets/img/icono.png" alt="TesaHealth icon" />
+          <div>
+            <div class="footer-name">TesaHealth</div>
+          </div>
+        </div>
+
+        <div class="footer-links" aria-label="Footer links">
+          <a href="/">Home</a>
+          <a href="/pages/patient_home.html">Patient</a>
+          <a href="/pages/clinician_home.html">Clinician</a>
+          <a href="/pages/admin_home.html">Admin</a>
+          <a href="/pages/login.html?role=PATIENT&next=/pages/area_patient.html">Login</a>
+          <a href="/pages/register.html?role=PATIENT">Get started</a>
+        </div>
+
+        <div class="footer-copy">© 2026 TesaHealth • All rights reserved</div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="/js/index.js"></script>
+</body>
+
+</html>

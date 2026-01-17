@@ -1,0 +1,258 @@
+.ppage {
+  padding: 34px 0 86px;
+  background:
+    radial-gradient(900px 520px at 12% 0%, rgba(118, 162, 161, 0.11), transparent 60%),
+    radial-gradient(900px 520px at 92% 12%, rgba(112, 151, 172, 0.11), transparent 55%),
+    linear-gradient(180deg, rgba(244, 247, 248, 0.55), rgba(251, 252, 253, 1));
+}
+
+.pgrid {
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.90);
+  border: 1px solid rgba(18, 58, 99, 0.12);
+  border-radius: calc(var(--radius) + 4px);
+  box-shadow: var(--shadow-soft);
+  padding: 18px;
+}
+
+.card-head {
+  margin-bottom: 10px;
+}
+
+.h1 {
+  margin: 0 0 6px;
+  font-size: 1.65rem;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+}
+
+.h2 {
+  margin: 0 0 10px;
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+}
+
+.muted {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.form {
+  display: grid;
+  gap: 12px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.label {
+  font-weight: 800;
+  color: rgba(18, 58, 99, 0.75);
+}
+
+.input,
+.select {
+  padding: 10px 12px;
+  border: 1px solid rgba(18, 58, 99, 0.16);
+  border-radius: 12px;
+  background: rgba(244, 247, 248, 0.72);
+  outline: none;
+  font: inherit;
+}
+
+.input:focus,
+.select:focus {
+  border-color: rgba(32, 106, 105, 0.45);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 0 0 4px rgba(118, 162, 161, 0.18);
+}
+
+.divider {
+  height: 1px;
+  background: rgba(18, 58, 99, 0.10);
+  margin: 6px 0;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.pwbox {
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.is-hidden {
+  display: none;
+}
+
+.pp-grid {
+  grid-template-columns: 1fr !important;
+  gap: 16px;
+}
+
+
+.auth-card {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+
+.auth-side {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.pp-divider {
+  height: 1px;
+  background: rgba(18, 58, 99, 0.10);
+  margin: 14px 0;
+}
+
+.pp-actions {
+  margin-top: 14px;
+}
+
+.pp-pw {
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+
+#email[readonly] {
+  opacity: .85;
+  cursor: not-allowed;
+}
+
+
+.panel {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(18, 58, 99, 0.12);
+  border-radius: calc(var(--radius) + 4px);
+  box-shadow: var(--shadow-soft);
+  padding: 18px;
+}
+
+
+.subpanel {
+  border: 1px solid rgba(18, 58, 99, 0.10);
+  background: rgba(244, 247, 248, 0.60);
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.subpanel-title {
+  font-weight: 900;
+  color: rgba(18, 58, 99, 0.90);
+  margin-bottom: 10px;
+}
+
+.panel-title {
+  margin: 0 0 6px;
+  color: var(--navy);
+  letter-spacing: -0.02em;
+  font-size: 1.25rem;
+  font-weight: 900;
+}
+
+
+.auth-card input,
+.auth-card select,
+.auth-card textarea {
+  padding: 10px 12px;
+  border: 1px solid rgba(18, 58, 99, 0.16);
+  border-radius: 12px;
+  background: rgba(244, 247, 248, 0.72);
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+  font: inherit;
+  color: rgba(18, 58, 99, 0.92);
+}
+
+.auth-card input:focus,
+.auth-card select:focus,
+.auth-card textarea:focus {
+  border-color: rgba(32, 106, 105, 0.45);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 0 0 4px rgba(118, 162, 161, 0.18);
+}
+
+
+.auth-card select {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(18, 58, 99, 0.55) 50%),
+    linear-gradient(135deg, rgba(18, 58, 99, 0.55) 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) 50%,
+    calc(100% - 12px) 50%;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 38px;
+}
+
+
+.auth-card .field-label {
+  font-weight: 800;
+  color: rgba(18, 58, 99, 0.75);
+}
+
+
+.actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+
+.btn-danger {
+  background: rgba(180, 30, 60, 0.95);
+  color: #fff;
+  border: 1px solid rgba(180, 30, 60, 0.35);
+}
+
+.btn-danger:hover {
+  filter: brightness(1.02);
+}
+
+
+.pp-pw {
+  justify-items: start;
+}
+
+.pp-pw .btn {
+  width: auto;
+  justify-self: start;
+}
+
+@media (max-width: 980px) {
+  .pgrid {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}

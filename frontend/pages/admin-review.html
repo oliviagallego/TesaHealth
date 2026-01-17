@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TesaHealth | Admin Review</title>
+
+  <link rel="icon" href="/assets/img/icono.png" type="image/png" />
+
+  <link rel="stylesheet" href="/css/index.css" />
+  <link rel="stylesheet" href="/css/login-register.css" />
+  <link rel="stylesheet" href="/css/admin-review.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="/" aria-label="Go to TesaHealth home">
+        <img class="brand-icon brand-icon--plain" src="/assets/img/icono.png" alt="TesaHealth logo" />
+        <div class="brand-text">
+          <div class="brand-name brand-name--lg">TesaHealth</div>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/pages/patient_home.html" class="nav-link">Patient</a>
+        <a href="/pages/clinician_home.html" class="nav-link">Clinician</a>
+        <a href="/pages/admin_home.html" class="nav-link" aria-current="page">Admin</a>
+      </nav>
+
+
+      <div class="nav-cta">
+        <a class="btn btn-ghost" href="/pages/login.html">Login</a>
+        <a class="btn btn-primary" href="/pages/register.html">Get started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="auth" aria-label="Admin verification review">
+    <div class="container">
+      <div class="auth-grid">
+        <!-- Left panel -->
+        <section class="auth-side">
+          <h1 class="auth-title" id="pageTitle">Verification review</h1>
+          <p class="auth-sub" id="pageSub">
+            Check the user data and documents. Then approve, request more documentation, or deny access.
+          </p>
+
+          <div class="auth-note" role="note">
+            <span class="dot" aria-hidden="true"></span>
+            <span>Make sure the information matches official evidence.</span>
+          </div>
+        </section>
+
+        <!-- Card -->
+        <section class="auth-card" aria-label="Review card">
+          <header class="auth-card-head">
+            <h2 id="reviewTitle" class="auth-card-title">Loading…</h2>
+            <p id="reviewSubtitle" class="auth-card-sub">Please wait.</p>
+          </header>
+
+          <!-- Content -->
+          <div id="reviewBox" class="review-box is-hidden">
+            <!-- User summary -->
+            <div class="review-section">
+              <div class="review-section__head">
+                <h3 class="review-h3">User</h3>
+                <span id="chipUserId" class="chip">ID —</span>
+              </div>
+              <div id="userInfo" class="review-kv"></div>
+            </div>
+
+            <!-- Profile summary -->
+            <div class="review-section">
+              <div class="review-section__head">
+                <h3 id="profileTitle" class="review-h3">Profile</h3>
+                <span id="chipStatus" class="chip chip--muted">status —</span>
+              </div>
+              <div id="profileInfo" class="review-kv"></div>
+            </div>
+
+            <!-- Documents (clinician only) -->
+            <div id="docsSection" class="review-section is-hidden">
+              <div class="review-section__head">
+                <h3 class="review-h3">Documents</h3>
+                <span class="chip chip--muted">Clinician</span>
+              </div>
+
+              <div id="docsList" class="docs-list"></div>
+
+              <p class="auth-card-sub" style="margin-top:10px;">
+                Tip: you can mark the profile as <strong>Needs more docs</strong> if something is missing.
+              </p>
+            </div>
+
+            <!-- Decision -->
+            <div class="review-section">
+              <h3 class="review-h3">Decision</h3>
+
+              <label class="field">
+                <span class="field-label">Notes (optional)</span>
+                <textarea id="note" rows="3" class="review-textarea"
+                  placeholder="Add a note for the user/admin log…"></textarea>
+              </label>
+
+              <div id="fixPanelMount"></div>
+              <div class="step-actions" style="justify-content:flex-start;gap:10px;flex-wrap:wrap;">
+                <button id="btnApprove" class="btn btn-primary" type="button">Approve</button>
+                <button id="btnNeedsFix" class="btn btn-ghost" type="button">Needs more docs</button>
+                <button id="btnDeny" class="btn btn-ghost review-danger" type="button">Deny</button>
+              </div>
+
+              <div id="resultBox" class="result-box is-hidden" role="status" aria-live="polite"></div>
+            </div>
+          </div>
+
+          <!-- Fallback (no token) -->
+          <div id="noAuthBox" class="auth-note is-hidden" style="margin-top:12px;">
+            <span class="dot" aria-hidden="true"></span>
+            <span>
+              You must be signed in as <strong>Admin</strong> to review verifications.
+              <a href="/pages/login.html?role=ADMIN" class="consent-link">Go to login</a>.
+            </span>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img class="brand-icon brand-icon--plain" src="/assets/img/icono.png" alt="TesaHealth icon" />
+        <div>
+          <div class="footer-name">TesaHealth</div>
+        </div>
+      </div>
+
+      <div class="footer-links" aria-label="Footer links">
+        <a href="/">Home</a>
+        <a href="/pages/patient_home.html">Patient</a>
+        <a href="/pages/clinician_home.html">Clinician</a>
+        <a href="/pages/admin_home.html">Admin</a>
+      </div>
+
+      <div class="footer-copy">© 2026 TesaHealth • All rights reserved</div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="/js/admin-review.js"></script>
+</body>
+
+</html>

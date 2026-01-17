@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TesaHealth | Login</title>
+
+  <link rel="icon" href="/assets/img/icono.png" type="image/png" />
+
+  <link rel="stylesheet" href="/css/index.css" />
+  <link rel="stylesheet" href="/css/login-register.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="/" aria-label="Go to TesaHealth home">
+        <img class="brand-icon brand-icon--plain" src="/assets/img/icono.png" alt="TesaHealth icon" />
+        <div class="brand-text">
+          <div class="brand-name brand-name--lg">TesaHealth</div>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/pages/patient_home.html" class="nav-link">Patient</a>
+        <a href="/pages/clinician_home.html" class="nav-link">Clinician</a>
+        <a href="/pages/admin_home.html" class="nav-link">Admin</a>
+      </nav>
+
+      <div class="nav-cta">
+        <a class="btn btn-ghost" href="/pages/login.html" aria-current="page">Login</a>
+        <a class="btn btn-primary" href="/pages/register.html">Get started</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="auth">
+    <div class="container auth-grid">
+      <!-- Left panel -->
+      <section class="auth-side" aria-label="Login info">
+        <h1 class="auth-title">Welcome back</h1>
+        <p class="auth-sub">
+          Sign in to access your cases, clinician queue, or admin dashboard.
+        </p>
+
+        <div class="auth-note" role="note" aria-label="Emergency disclaimer">
+          <span class="dot" aria-hidden="true"></span>
+          <span>
+            Warning signs? Call <strong>112</strong>.
+          </span>
+        </div>
+      </section>
+
+      <!-- Form card -->
+      <section class="auth-card" aria-label="Login form">
+        <div class="auth-card-head">
+          <h2 id="loginTitle" class="auth-card-title">Sign in</h2>
+          <p class="auth-card-sub">Use the email and password you registered with.</p>
+        </div>
+
+        <form id="loginForm" class="auth-form" novalidate>
+
+          <label class="field" id="roleWrap">
+            <span class="field-label">Portal</span>
+            <select id="roleSelect" class="auth-select" required>
+              <option value="PATIENT">Patient</option>
+              <option value="CLINICIAN">Clinician</option>
+              <option value="ADMIN">Admin</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span class="field-label">Email</span>
+            <input id="email" type="email" placeholder="you@example.com" autocomplete="email" required />
+          </label>
+
+          <label class="field">
+            <span class="field-label">Password</span>
+            <input id="password" type="password" placeholder="Your password" autocomplete="current-password" required />
+          </label>
+
+          <button class="btn btn-primary auth-submit" type="submit">Login</button>
+
+          <p class="auth-foot">
+            Don’t have an account?
+            <a id="goRegister" class="auth-link" href="/pages/register.html">Create one</a>
+          </p>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img class="brand-icon brand-icon--plain" src="/assets/img/icono.png" alt="TesaHealth icon" />
+        <div>
+          <div class="footer-name">TesaHealth</div>
+        </div>
+      </div>
+
+      <div class="footer-links" aria-label="Footer links">
+        <a href="/">Home</a>
+        <a href="/pages/patient_home.html">Patient</a>
+        <a href="/pages/clinician_home.html">Clinician</a>
+        <a href="/pages/admin_home.html">Admin</a>
+      </div>
+
+      <div class="footer-copy">© 2026 TesaHealth • All rights reserved</div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="/js/login.js"></script>
+</body>
+
+</html>

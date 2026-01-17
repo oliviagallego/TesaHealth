@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TesaHealth | Register</title>
+
+  <link rel="icon" href="/assets/img/icono.png" type="image/png" />
+
+  <link rel="stylesheet" href="/css/index.css" />
+  <link rel="stylesheet" href="/css/login-register.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="/" aria-label="Go to TesaHealth home">
+        <img class="brand-icon brand-icon--plain" src="/assets/img/icono.png" alt="TesaHealth logo" />
+        <div class="brand-text">
+          <div class="brand-name brand-name--lg">TesaHealth</div>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/pages/patient_home.html" class="nav-link">Patient</a>
+        <a href="/pages/clinician_home.html" class="nav-link">Clinician</a>
+        <a href="/pages/admin_home.html" class="nav-link">Admin</a>
+      </nav>
+
+      <div class="nav-cta">
+        <a class="btn btn-ghost" href="/pages/login.html">Login</a>
+        <a class="btn btn-primary" href="/pages/register.html" aria-current="page">Get started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Cookies -->
+  <div id="consentLayer" class="consent-layer" role="dialog" aria-modal="true" aria-label="Privacy preferences">
+    <div class="consent-modal" role="document">
+      <div class="consent-top">
+        <div class="consent-brand">
+          <img src="/assets/img/icono.png" alt="TesaHealth icon" />
+          <span>TesaHealth</span>
+        </div>
+        <button id="consentClose" class="consent-x" type="button" aria-label="Close">×</button>
+      </div>
+
+      <div class="consent-body">
+        <h2 class="consent-title">Your privacy matters</h2>
+        <p class="consent-text">
+          We process your information to create and secure your account and to provide <strong>educational health
+            guidance</strong> based on the symptoms and profile you submit. This platform does <strong>not</strong>
+          replace a medical consultation and is <strong>not</strong> an emergency service.
+          <a class="consent-link" href="/pages/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.
+        </p>
+
+        <div id="consentDetails" class="consent-details is-hidden" aria-label="Consent details">
+          <div class="consent-chip">
+            <div class="consent-chip__title">Privacy policy (required)</div>
+            <div class="consent-chip__text">I have read and accept the privacy policy.</div>
+            <label class="consent-toggle">
+              <input id="consentPrivacy" type="checkbox" />
+              <span>I agree</span>
+            </label>
+          </div>
+
+          <div class="consent-chip">
+            <div class="consent-chip__title">Data processing (required)</div>
+            <div class="consent-chip__text">
+              I give my <strong> consent</strong> to the processing of my health-related data to provide
+              educational guidance, including AI-assisted processing and, where applicable, review by verified
+              clinicians.
+            </div>
+            <label class="consent-toggle">
+              <input id="consentDataProcessing" type="checkbox" />
+              <span>I agree</span>
+            </label>
+          </div>
+
+          <div class="consent-chip">
+            <div class="consent-chip__title">Notifications (optional)</div>
+            <div class="consent-chip__text">Allow notifications about account verification and case status.</div>
+            <label class="consent-toggle">
+              <input id="consentPush" type="checkbox" />
+              <span>I agree</span>
+            </label>
+          </div>
+
+          <p class="consent-fineprint">
+            Educational use only. If you have warning signs, call <strong>112</strong>.
+          </p>
+        </div>
+      </div>
+
+      <div class="consent-actions">
+        <button id="consentDeny" class="btn btn-ghost consent-btn" type="button">Deny</button>
+        <button id="consentCustomize" class="btn btn-ghost consent-btn" type="button">Customize</button>
+        <button id="consentAccept" class="btn btn-primary consent-btn" type="button">Accept</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Register-->
+  <main id="registerShell" class="auth is-hidden" aria-label="Register">
+    <div class="container">
+      <div class="auth-grid">
+        <!-- Left panel -->
+        <section class="auth-side">
+          <h1 class="auth-title">Create your account</h1>
+          <p class="auth-sub">
+            Choose your role and complete your profile. Clinician/Admin accounts may require verification.
+          </p>
+
+          <div class="auth-note" role="note" aria-label="Emergency disclaimer">
+            <span class="dot" aria-hidden="true"></span>
+            <span>Warning signs? Call <strong>112</strong>.</span>
+          </div>
+        </section>
+
+        <!-- Card -->
+        <section class="auth-card" aria-label="Register form">
+          <header class="auth-card-head">
+            <h2 id="registerTitle" class="auth-card-title">Sign up</h2>
+            <p class="auth-card-sub" id="registerSubtitle">Let’s get you set up.</p>
+          </header>
+
+          <div class="stepper" aria-label="Onboarding progress">
+            <div class="stepper-track"></div>
+            <div class="stepper-dot is-active" data-step-dot="1"><span>1</span></div>
+            <div class="stepper-dot" data-step-dot="2"><span>2</span></div>
+            <div class="stepper-dot" data-step-dot="3"><span>3</span></div>
+            <div class="stepper-dot" data-step-dot="4"><span>4</span></div>
+            <div class="stepper-dot" data-step-dot="5"><span>5</span></div>
+          </div>
+
+          <form id="registerForm" class="auth-form" novalidate>
+            <!-- STEP 1 -->
+            <section class="step" data-step="1">
+              <div id="roleChooser" class="field">
+                <label class="field-label" for="roleSelect">Who are you?</label>
+                <select id="roleSelect" class="auth-select">
+                  <option value="">Select a role</option>
+                  <option value="PATIENT">Patient</option>
+                  <option value="CLINICIAN">Clinician</option>
+                  <option value="ADMIN">Admin</option>
+                </select>
+              </div>
+
+              <input id="roleHidden" type="hidden" value="" />
+
+              <div class="step-actions">
+                <button class="btn btn-primary" type="button" id="btnNext1">Next</button>
+                <a class="btn btn-ghost" href="/pages/login.html">I already have an account</a>
+              </div>
+            </section>
+
+            <!-- STEP 2 (credentials) -->
+            <section class="step is-hidden" data-step="2">
+              <div class="field">
+                <label class="field-label" for="email">Email</label>
+                <input id="email" type="email" placeholder="you@example.com" autocomplete="email" required />
+              </div>
+
+              <div class="field">
+                <label class="field-label" for="password">Password</label>
+                <input id="password" type="password" placeholder="Create a password" autocomplete="new-password"
+                  required />
+              </div>
+
+              <div class="step-actions">
+                <button class="btn btn-ghost" type="button" id="btnBack2">Back</button>
+                <button class="btn btn-primary" type="button" id="btnNext2">Next</button>
+              </div>
+            </section>
+
+            <!-- STEP 2B (confirm email screen) -->
+            <section class="step is-hidden" data-step="2b">
+              <h3 class="role-title">Confirm your email</h3>
+              <p class="auth-card-sub">
+                We’ve sent a confirmation link to <strong id="confirmEmailLabel"></strong>.
+              </p>
+              <p class="auth-card-sub">Open your inbox and click “Confirm my email”.</p>
+
+              <div class="step-actions">
+                <button class="btn btn-ghost" type="button" id="btnBack2b">Back</button>
+                <a class="btn btn-primary" href="/pages/login.html">Go to login</a>
+              </div>
+            </section>
+
+            <!-- STEP 3 (common details) -->
+            <section class="step is-hidden" data-step="3">
+              <h3 class="role-title">Your details</h3>
+
+              <div class="grid-2">
+                <label class="field" data-fix="name">
+                  <span class="field-label">Name</span>
+                  <input id="commonName" type="text" required />
+                </label>
+                <label class="field" data-fix="surname">
+                  <span class="field-label">Surname</span>
+                  <input id="commonSurname" type="text" required />
+                </label>
+              </div>
+
+              <label class="field" data-fix="address">
+                <span class="field-label">Address</span>
+                <input id="commonAddress" type="text" required />
+              </label>
+
+              <div class="grid-2">
+                <label class="field" data-fix="dob">
+                  <span class="field-label">Date of birth</span>
+                  <input id="commonDob" type="date" required />
+                </label>
+                <label class="field" data-fix="phone">
+                  <span class="field-label">Phone</span>
+                  <input id="commonPhone" type="tel" placeholder="+34 600 000 000" required />
+                </label>
+              </div>
+
+              <div class="step-actions">
+                <button class="btn btn-ghost" type="button" id="btnBack3">Back</button>
+                <button class="btn btn-primary" type="button" id="btnNext3">Next</button>
+              </div>
+            </section>
+
+            <!-- STEP 4 (role-specific general info) -->
+            <section class="step is-hidden" data-step="4">
+              <!-- PATIENT -->
+              <div id="patientFields" class="role-block is-hidden">
+                <h3 class="role-title">General information</h3>
+
+                <div class="grid-2">
+                  <label class="field">
+                    <span class="field-label">Sex</span>
+                    <select id="pSex" class="auth-select">
+                      <option value="">Select</option>
+                      <option value="M">Male</option>
+                      <option value="W">Female</option>
+                    </select>
+                  </label>
+
+                  <label class="field is-hidden" id="pregnantWrap">
+                    <span class="field-label">Pregnant</span>
+                    <select id="pPregnant" class="auth-select">
+                      <option value="">Select</option>
+                      <option value="no">No</option>
+                      <option value="yes">Yes</option>
+                    </select>
+                  </label>
+                </div>
+
+                <div class="grid-2">
+                  <label class="field">
+                    <span class="field-label">Weight (kg)</span>
+                    <input id="pWeight" type="number" min="1" step="0.1" placeholder="e.g. 65" />
+                  </label>
+                  <label class="field">
+                    <span class="field-label">Height (cm)</span>
+                    <input id="pHeight" type="number" min="1" step="0.1" placeholder="e.g. 170" />
+                  </label>
+                </div>
+
+                <div class="bmi-hint" id="bmiHint" role="button" tabindex="0" aria-label="Want to know your BMI?">
+                  <span class="bmi-dot" aria-hidden="true"></span>
+                  <span class="bmi-text">Want to know your BMI?</span>
+                </div>
+                <div id="bmiBox" class="bmi-box is-hidden" role="note" aria-label="BMI information">
+                  <div class="bmi-title">Body Mass Index (BMI)</div>
+                  <div class="bmi-text" id="bmiText"></div>
+                </div>
+              </div>
+
+              <!-- CLINICIAN -->
+              <div id="clinicianFields" class="role-block is-hidden">
+                <h3 class="role-title">Professional details</h3>
+
+                <div class="grid-2">
+                  <label class="field" data-fix="medical_college_reg_no">
+                    <span class="field-label">Medical College registration number</span>
+                    <input id="cRegNumber" type="text" />
+                  </label>
+
+                  <label class="field" data-fix="provincial_college">
+                    <span class="field-label">Provincial college</span>
+                    <input id="cProvCollege" type="text" />
+                  </label>
+                </div>
+
+                <div class="grid-2">
+                  <label class="field" data-fix="specialty">
+                    <span class="field-label">Specialty</span>
+                    <input id="cSpecialty" type="text" />
+                  </label>
+
+                  <label class="field" data-fix="mir_year">
+                    <span class="field-label">MIR year</span>
+                    <input id="cMirYear" type="number" min="1900" max="2100" />
+                  </label>
+                </div>
+
+                <label class="field" data-fix="liability_insurance">
+                  <span class="field-label">Professional liability insurance</span>
+                  <input id="cInsurance" type="text" />
+                </label>
+              </div>
+
+              <!-- ADMIN -->
+              <div id="adminFields" class="role-block is-hidden">
+                <h3 class="role-title">Admin verification</h3>
+                <p class="auth-card-sub">
+                  Admin accounts require verification. You’ll be asked to wait after submitting your details.
+                </p>
+              </div>
+
+              <div class="step-actions">
+                <button class="btn btn-ghost" type="button" id="btnBack4">Back</button>
+                <button class="btn btn-primary" type="button" id="btnNext4">Next</button>
+              </div>
+            </section>
+
+            <!-- STEP 5 (patient lifestyle / clinician docs / admin wait) -->
+            <section class="step is-hidden" data-step="5">
+              <!-- PATIENT -->
+              <div id="patientStep5" class="role-block is-hidden">
+                <h3 class="role-title">Health background</h3>
+
+                <div class="grid-2">
+                  <label class="field">
+                    <span class="field-label">Do you smoke?</span>
+                    <select id="pSmoking" class="auth-select">
+                      <option value="na">Prefer not to say</option>
+                      <option value="no">No</option>
+                      <option value="yes">Yes</option>
+                    </select>
+                  </label>
+
+                  <label class="field">
+                    <span class="field-label">High blood pressure?</span>
+                    <select id="pHbp" class="auth-select">
+                      <option value="na">Prefer not to say</option>
+                      <option value="no">No</option>
+                      <option value="yes">Yes</option>
+                    </select>
+                  </label>
+                </div>
+
+                <div class="grid-2">
+                  <label class="field">
+                    <span class="field-label">Diabetes?</span>
+                    <select id="pDiabetes" class="auth-select">
+                      <option value="na">Prefer not to say</option>
+                      <option value="no">No</option>
+                      <option value="yes">Yes</option>
+                    </select>
+                  </label>
+
+                  <span></span>
+                </div>
+
+                <label class="field">
+                  <span class="field-label">Chronic conditions</span>
+                  <input id="pChronic" type="text" placeholder="e.g. asthma" />
+                </label>
+
+                <label class="field">
+                  <span class="field-label">Previous surgeries</span>
+                  <input id="pSurgery" type="text" placeholder="e.g. appendectomy" />
+                </label>
+
+                <label class="field">
+                  <span class="field-label">Allergies</span>
+                  <input id="pAllergies" type="text" placeholder="e.g. penicillin" />
+                </label>
+
+                <label class="field">
+                  <span class="field-label">Medications</span>
+                  <input id="pMeds" type="text" placeholder="e.g. metformin" />
+                </label>
+              </div>
+
+              <!-- CLINICIAN -->
+              <div id="clinicianStep5" class="role-block is-hidden">
+                <h3 class="role-title">Upload evidence/documents</h3>
+                <p class="auth-card-sub">
+                  Medical degree (or provisional certificate) and current college membership certificate (or screenshot
+                  with visible date).
+                </p>
+
+                <label class="field" data-fix="documents">
+                  <span class="field-label">Documents</span>
+                  <input id="cDocs" name="clinician_docs" type="file" multiple accept=".pdf,image/png,image/jpeg" />
+                </label>
+
+                <div class="auth-note" style="margin-top:10px">
+                  <span class="dot" aria-hidden="true"></span>
+                  <span>After submitting, an admin will review your documents.</span>
+                </div>
+              </div>
+
+              <!-- ADMIN -->
+              <div id="adminStep5" class="role-block is-hidden">
+                <h3 class="role-title">Waiting for verification</h3>
+                <p class="auth-card-sub">
+                  Your admin account needs verification. We’ll notify you when it’s approved.
+                </p>
+              </div>
+
+              <div class="step-actions">
+                <button class="btn btn-ghost" type="button" id="btnBack5">Back</button>
+                <button class="btn btn-primary" type="submit" id="btnFinish">Finish</button>
+              </div>
+            </section>
+          </form>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img class="brand-icon brand-icon--plain" src="/assets/img/icono.png" alt="TesaHealth icon" />
+        <div>
+          <div class="footer-name">TesaHealth</div>
+        </div>
+      </div>
+
+      <div class="footer-links" aria-label="Footer links">
+        <a href="/">Home</a>
+        <a href="/pages/patient_home.html">Patient</a>
+        <a href="/pages/clinician_home.html">Clinician</a>
+        <a href="/pages/admin_home.html">Admin</a>
+      </div>
+
+      <div class="footer-copy">© 2026 TesaHealth • All rights reserved</div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="/js/register.js"></script>
+</body>
+
+</html>

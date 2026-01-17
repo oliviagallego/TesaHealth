@@ -1,0 +1,175 @@
+.find-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  margin-top: 14px;
+  gap: 22px;
+  align-items: start;
+}
+
+
+.find-left {
+  display: grid;
+  gap: 14px;
+}
+
+.find-right {
+  position: relative;
+  padding: 18px;
+}
+
+
+.find-controls {
+  display: grid;
+  gap: 14px;
+}
+
+.find-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.find-row.small {
+  gap: 8px;
+}
+
+
+.find-head {
+  margin-bottom: 18px;
+}
+
+.find-controls {
+  gap: 18px;
+}
+
+.find-results-head {
+  margin-top: 6px;
+  padding-top: 6px;
+}
+
+
+.results {
+  gap: 12px;
+}
+
+.result-card {
+  padding: 14px;
+}
+
+.muted {
+  color: rgba(18, 58, 99, 0.66);
+  font-weight: 700;
+}
+
+.muted.small {
+  font-size: 0.92rem;
+}
+
+.map {
+  height: 560px;
+  border-radius: 14px;
+  border: 1px solid rgba(18, 58, 99, 0.12);
+  overflow: hidden;
+}
+
+.results {
+  display: grid;
+  gap: 10px;
+}
+
+.result-card {
+  display: grid;
+  gap: 6px;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(18, 58, 99, 0.12);
+  background: rgba(255, 255, 255, 0.70);
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+
+.result-card:hover {
+  transform: translateY(-1px);
+  border-color: rgba(32, 106, 105, 0.25);
+  box-shadow: 0 14px 38px rgba(15, 23, 42, 0.08);
+}
+
+.result-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.result-name {
+  font-weight: 900;
+  color: rgba(18, 58, 99, 0.92);
+}
+
+.result-dist {
+  font-weight: 900;
+  color: rgba(32, 106, 105, 0.92);
+}
+
+.result-sub {
+  color: rgba(18, 58, 99, 0.70);
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+.result-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.gm-banner {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(18, 58, 99, 0.14);
+  border-radius: 16px;
+  padding: 12px 12px;
+  box-shadow: 0 14px 38px rgba(15, 23, 42, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.gm-title {
+  font-weight: 900;
+  color: rgba(18, 58, 99, 0.92);
+}
+
+.gm-sub {
+  color: rgba(18, 58, 99, 0.70);
+  font-weight: 700;
+  font-size: 0.92rem;
+  margin-top: 2px;
+}
+
+.gm-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.is-hidden {
+  display: none !important;
+}
+
+@media (max-width: 980px) {
+  .find-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .map {
+    height: 460px;
+  }
+}

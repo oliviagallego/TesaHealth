@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>TesaHealth – Case report</title>
+</head>
+
+<body
+    style="margin:0; padding:0; background-color:#f3f4f6; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color:#111827;">
+    <div style="max-width:760px; margin:0 auto; padding:24px;">
+
+        <!-- BRAND -->
+        <header style="text-align:center; margin-bottom:24px;">
+            <img src="{{LOGO_URL}}" alt="TesaHealth"
+                style="width:120px; height:auto; display:block; margin:0 auto 10px;" />
+            <div style="font-weight:800; font-size:22px; letter-spacing:-0.02em; color:#123a63;">
+                TesaHealth
+            </div>
+            <div style="margin-top:6px; font-size:13px; color:#5b6b7a;">
+                Educational platform • Not for medical emergencies
+            </div>
+        </header>
+
+        <!-- MAIN CARD -->
+        <main
+            style="background-color:#ffffff; border-radius:12px; padding:24px; box-shadow:0 1px 3px rgba(15,23,42,0.08);">
+            <h2 style="margin-top:0; margin-bottom:12px; color:#123a63; font-size:22px; letter-spacing:-0.02em;">
+                Case report (consensus completed)
+            </h2>
+
+            <p style="margin:0 0 14px;">
+                Hi <strong>{{PATIENT_FULLNAME}}</strong>,
+            </p>
+
+            <p style="margin:0 0 16px; color:#374151; line-height:1.6;">
+                Below is your case report with your profile data and the final clinician consensus for your case.
+            </p>
+
+            <!-- PATIENT INFO -->
+            <div
+                style="margin-top:14px; padding:14px; border:1px solid rgba(18,58,99,0.12); border-radius:12px; background:#f8fafc;">
+                <div style="font-weight:800; color:#123a63; margin-bottom:10px;">Patient information</div>
+                {{PATIENT_INFO_ROWS}}
+            </div>
+
+            <!-- CASE INFO -->
+            <div style="margin-top:16px;">
+                <div style="font-weight:800; color:#123a63; margin-bottom:10px;">Case information</div>
+                {{CASE_INFO_ROWS}}
+            </div>
+
+            <!-- EVIDENCE -->
+            <div style="margin-top:14px;">
+                <div style="font-weight:800; color:#123a63; margin-bottom:8px;">Evidence (symptoms)</div>
+                <div
+                    style="background:#ffffff; border:1px solid #e5e7eb; border-radius:12px; padding:12px; color:#374151; line-height:1.6;">
+                    {{EVIDENCE_BLOCK}}
+                </div>
+            </div>
+
+            <!-- MIR -->
+            <div style="margin-top:14px;">
+                <div style="font-weight:800; color:#123a63; margin-bottom:8px;">MIR-style question (educational)</div>
+                <div
+                    style="background:#f4f7f8; border:1px solid rgba(18,58,99,0.12); border-radius:12px; padding:14px;">
+                    <pre style="margin:0; white-space:pre-wrap; font-weight:800; color:#123a63;">{{MIR_TEXT}}</pre>
+                </div>
+
+                {{MIR_OPTIONS_BLOCK}}
+            </div>
+
+            <!-- CONSENSUS RESULT -->
+            <div style="margin-top:16px;">
+                <div style="font-weight:800; color:#123a63; margin-bottom:10px;">Final consensus</div>
+                <div style="background:#ffffff; border:1px solid #e5e7eb; border-radius:12px; padding:12px;">
+                    {{CONSENSUS_ROWS}}
+                </div>
+            </div>
+
+            {{PATIENT_SUMMARY_BLOCK}}
+            {{PATIENT_EXPLANATION_BLOCK}}
+            {{CLINICIAN_NOTES_BLOCK}}
+
+            <!-- DISCLAIMER -->
+            <div style="margin-top:18px; padding-top:14px; border-top:1px solid #e5e7eb;">
+                <p style="margin:0; color:#6b7280; font-size:12px; line-height:1.6;">
+                    <strong>Safety note:</strong> TesaHealth is for educational guidance only. If you have warning signs
+                    (chest pain,
+                    severe shortness of breath, stroke symptoms, heavy bleeding), call <strong>112</strong>.
+                </p>
+            </div>
+
+            <p style="margin:18px 0 0; color:#374151;">
+                Thank you,<br />
+                <strong>The TesaHealth Team</strong>
+            </p>
+        </main>
+
+        <!-- CONTACT -->
+        <section
+            style="margin-top:24px; background-color:#ffffff; border-radius:12px; padding:20px; box-shadow:0 1px 3px rgba(15,23,42,0.06);">
+            <h2 style="margin-top:0; margin-bottom:16px; font-size:18px; color:#111827;">Contact</h2>
+
+            <div>
+                <div style="display:flex; align-items:center; margin-bottom:10px;">
+                    <span style="display:inline-block; width:20px; text-align:center; margin-right:10px;">✉️</span>
+                    <p style="margin:0; color:#374151;">{{SUPPORT_EMAIL}}</p>
+                </div>
+
+                <div style="display:flex; align-items:center; margin-bottom:10px;">
+                    <span style="display:inline-block; width:20px; text-align:center; margin-right:10px;">📞</span>
+                    <p style="margin:0; color:#374151;">{{SUPPORT_PHONE}}</p>
+                </div>
+
+                <div style="display:flex; align-items:center;">
+                    <span style="display:inline-block; width:20px; text-align:center; margin-right:10px;">📍</span>
+                    <p style="margin:0; color:#374151;">{{SUPPORT_LOCATION}}</p>
+                </div>
+            </div>
+
+            <p style="margin:14px 0 0; font-size:12px; color:#6b7280; line-height:1.6;">
+                Need help? Reply to this email and we’ll get back to you.
+            </p>
+        </section>
+
+        <!-- FOOTER -->
+        <footer style="margin-top:40px; padding-top:18px; border-top:1px solid #e5e7eb; font-size:12px; color:#6b7280;">
+            <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px;">
+                <div style="display:flex; align-items:center; gap:8px;">
+                    <img src="{{ICON_URL}}" alt="TesaHealth icon" style="width:24px; height:24px;" />
+                    <span style="font-weight:700; color:#111827;">TesaHealth</span>
+                </div>
+
+                <div>
+                    <span style="color:#123a63; font-weight:600;">{{FRONTEND_URL}}</span>
+                </div>
+            </div>
+
+            <div style="margin-top:10px; text-align:center;">
+                &copy; 2026 TesaHealth | All rights reserved
+            </div>
+        </footer>
+
+    </div>
+</body>
+
+</html>

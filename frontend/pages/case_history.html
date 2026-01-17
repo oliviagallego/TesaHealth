@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TesaHealth | Case history</title>
+
+  <link rel="icon" href="/assets/img/icono.png" type="image/png" />
+
+  <link rel="stylesheet" href="/css/index.css" />
+  <link rel="stylesheet" href="/css/login-register.css" />
+  <link rel="stylesheet" href="/css/area_patient.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="/" aria-label="Go to TesaHealth home">
+        <img class="brand-icon brand-icon--plain" src="/assets/img/icono.png" alt="TesaHealth icon" />
+        <div class="brand-text">
+          <div class="brand-name brand-name--lg">TesaHealth</div>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/pages/patient_home.html" class="nav-link active" aria-current="page">Patient</a>
+        <a href="/pages/clinician_home.html" class="nav-link">Clinician</a>
+        <a href="/pages/admin_home.html" class="nav-link">Admin</a>
+      </nav>
+
+      <div class="nav-cta">
+        <a class="btn btn-ghost" href="/pages/area_patient.html">Back</a>
+        <button id="btnLogout" class="btn btn-ghost" type="button">Logout</button>
+        <a class="btn btn-primary" href="/pages/new_case.html">New case</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="patient">
+    <div class="container patient-grid">
+      <!-- Left -->
+      <section class="patient-side" aria-label="Patient overview">
+        <div class="patient-card">
+          <div class="patient-card-head">
+            <h1 class="patient-title">Case history</h1>
+            <p class="patient-sub">Browse all your previous cases and view details.</p>
+          </div>
+
+          <div class="patient-profile">
+            <div class="avatar" aria-hidden="true">
+              <span id="avatarLetter">P</span>
+            </div>
+
+            <div class="patient-meta">
+              <div class="patient-name" id="patientName">—</div>
+              <div class="patient-email" id="patientEmail">—</div>
+            </div>
+          </div>
+
+          <div class="patient-alert" role="note" aria-label="Emergency disclaimer">
+            <span class="dot" aria-hidden="true"></span>
+            <span>Warning signs? Call <strong>112</strong>.</span>
+          </div>
+        </div>
+
+        <div class="patient-card">
+          <h2 class="card-h2">Shortcuts</h2>
+
+          <div class="quick-grid">
+            <a class="quick" href="/pages/new_case.html">
+              <div class="quick-title">Create new case</div>
+              <div class="quick-sub">Start a guided symptom interview</div>
+            </a>
+
+            <a class="quick" href="/pages/patient_profile.html">
+              <div class="quick-title">Edit profile</div>
+              <div class="quick-sub">Update your account & health info</div>
+            </a>
+
+            <a class="quick" href="/pages/area_patient.html">
+              <div class="quick-title">Patient area</div>
+              <div class="quick-sub">Back to main actions</div>
+            </a>
+
+            <a class="quick" href="/pages/find_hospital.html">
+              <div class="quick-title">Find hospital</div>
+              <div class="quick-sub">Hospitals & clinics in Spain</div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right -->
+      <section class="patient-main" aria-label="Cases and results">
+        <!-- Overview -->
+        <section class="panel">
+          <div class="panel-head">
+            <h2 class="panel-title">Overview</h2>
+            <p class="panel-sub">A snapshot of your activity.</p>
+          </div>
+
+          <div class="stats-row" aria-label="Patient stats">
+            <div class="stat">
+              <div class="stat-label">Total cases</div>
+              <div id="statTotalCases" class="stat-value">—</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">Open</div>
+              <div id="statOpenCases" class="stat-value">—</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">Completed</div>
+              <div id="statDoneCases" class="stat-value">—</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">Latest case</div>
+              <div id="statLatestCase" class="stat-value">—</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">Latest consensus</div>
+              <div id="statLatestConsensus" class="stat-value">—</div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- My cases -->
+        <section class="panel">
+          <div class="panel-head panel-head-row">
+            <div>
+              <h2 class="panel-title">My cases</h2>
+              <p class="panel-sub">Click a case to see details and results (if available).</p>
+            </div>
+
+            <div class="panel-actions">
+              <input id="searchCases" class="input" type="search" placeholder="Search by id/status..." />
+              <select id="filterStatus" class="select">
+                <option value="in_interview">In interview</option>
+                <option value="ai_pending">AI pending</option>
+                <option value="ai_ready">AI ready</option>
+                <option value="in_review">In review</option>
+                <option value="consensus_ready" selected>Consensus ready</option>
+                <option value="closed">Closed</option>
+
+              </select>
+            </div>
+          </div>
+
+          <div id="casesEmpty" class="empty is-hidden">
+            <div class="empty-title">No cases yet</div>
+            <div class="empty-sub">Start a new case to get guided next steps.</div>
+            <a class="btn btn-primary" href="/pages/new_case.html">Start a case</a>
+          </div>
+
+          <div id="casesList" class="cases"></div>
+        </section>
+
+        <!-- Case details -->
+        <section class="panel">
+          <div class="panel-head">
+            <h2 class="panel-title">Case details</h2>
+            <p class="panel-sub">Your selected case appears here.</p>
+          </div>
+
+          <div id="caseDetail" class="case-detail">
+            <div class="case-detail-empty">Select a case from the list to view details.</div>
+          </div>
+        </section>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img class="brand-icon brand-icon--plain" src="/assets/img/icono.png" alt="TesaHealth icon" />
+        <div>
+          <div class="footer-name">TesaHealth</div>
+        </div>
+      </div>
+
+      <div class="footer-links" aria-label="Footer links">
+        <a href="/">Home</a>
+        <a href="/pages/patient_home.html">Patient</a>
+        <a href="/pages/clinician_home.html">Clinician</a>
+        <a href="/pages/admin_home.html">Admin</a>
+        <a href="/pages/login.html">Login</a>
+        <a href="/pages/register.html">Get started</a>
+      </div>
+
+      <div class="footer-copy">© 2026 TesaHealth • All rights reserved</div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="/js/area_patient.js"></script>
+</body>
+
+</html>

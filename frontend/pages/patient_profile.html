@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TesaHealth | Edit profile</title>
+
+  <link rel="icon" href="/assets/img/icono.png" type="image/png" />
+
+  <link rel="stylesheet" href="/css/index.css" />
+  <link rel="stylesheet" href="/css/login-register.css" />
+  <link rel="stylesheet" href="/css/patient_profile.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="/" aria-label="Go to TesaHealth home">
+        <img class="brand-icon brand-icon--plain" src="/assets/img/icono.png" alt="TesaHealth icon" />
+        <div class="brand-text">
+          <div class="brand-name brand-name--lg">TesaHealth</div>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/pages/patient_home.html" class="nav-link active" aria-current="page">Patient</a>
+        <a href="/pages/clinician_home.html" class="nav-link">Clinician</a>
+        <a href="/pages/admin_home.html" class="nav-link">Admin</a>
+      </nav>
+
+      <div class="nav-cta">
+        <a class="btn btn-ghost" href="/pages/area_patient.html">Back</a>
+        <button id="btnLogout" class="btn btn-ghost" type="button">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="auth" aria-label="Edit profile">
+    <div class="container">
+      <div class="auth-grid pp-grid">
+        <!-- Left panel -->
+        <section class="auth-side">
+          <h1 class="auth-title">Edit your profile</h1>
+          <p class="auth-sub">
+            Your personal and health info helps us tailor educational guidance.
+          </p>
+
+          <div class="auth-note" role="note" aria-label="Emergency disclaimer">
+            <span class="dot" aria-hidden="true"></span>
+            <span>Warning signs? Call <strong>112</strong>.</span>
+          </div>
+        </section>
+
+        <!-- Card -->
+        <section class="auth-card" aria-label="Profile form">
+          <header class="auth-card-head">
+            <h2 class="auth-card-title">Profile</h2>
+            <p class="auth-card-sub">Your data is prefilled. Update what you need and save.</p>
+          </header>
+
+          <form id="profileForm" class="auth-form" novalidate>
+            <h3 class="role-title">Account</h3>
+
+            <div class="grid-2">
+              <label class="field">
+                <span class="field-label">Name</span>
+                <input id="name" type="text" autocomplete="given-name" required />
+              </label>
+
+              <label class="field">
+                <span class="field-label">Surname</span>
+                <input id="surname" type="text" autocomplete="family-name" required />
+              </label>
+            </div>
+
+            <label class="field">
+              <span class="field-label">Email</span> 
+              <input id="email" type="email" autocomplete="email" readonly />
+            </label>
+
+            <label class="field">
+              <span class="field-label">Address</span>
+              <input id="address" type="text" autocomplete="street-address" required />
+            </label>
+
+            <div class="grid-2">
+              <label class="field">
+                <span class="field-label">Date of birth</span>
+                <input id="dob" type="date" required />
+              </label>
+
+              <label class="field">
+                <span class="field-label">Phone</span>
+                <input id="phone" type="tel" autocomplete="tel" required />
+              </label>
+            </div>
+
+            <div class="pp-divider"></div>
+
+            <h3 class="role-title">Health</h3>
+
+            <div class="grid-2">
+              <label class="field">
+                <span class="field-label">Sex</span>
+                <select id="sex" class="auth-select">
+                  <option value="">Select</option>
+                  <option value="M">Male</option>
+                  <option value="W">Female</option>
+                </select>
+              </label>
+
+              <label id="pregnantWrap" class="field is-hidden">
+                <span class="field-label">Pregnant</span>
+                <select id="pregnant" class="auth-select">
+                  <option value="">Select</option>
+                  <option value="no">No</option>
+                  <option value="yes">Yes</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="grid-2">
+              <label class="field">
+                <span class="field-label">Weight (kg)</span>
+                <input id="weight" type="number" min="1" step="0.1" />
+              </label>
+
+              <label class="field">
+                <span class="field-label">Height (cm)</span>
+                <input id="height" type="number" min="1" step="0.1" />
+              </label>
+            </div>
+
+            <div class="grid-2">
+              <label class="field">
+                <span class="field-label">Do you smoke?</span>
+                <select id="smoking" class="auth-select">
+                  <option value="na">Prefer not to say</option>
+                  <option value="no">No</option>
+                  <option value="yes">Yes</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span class="field-label">High blood pressure?</span>
+                <select id="hbp" class="auth-select">
+                  <option value="na">Prefer not to say</option>
+                  <option value="no">No</option>
+                  <option value="yes">Yes</option>
+                </select>
+              </label>
+            </div>
+
+            <label class="field">
+              <span class="field-label">Diabetes?</span>
+              <select id="diabetes" class="auth-select">
+                <option value="na">Prefer not to say</option>
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span class="field-label">Chronic condition</span>
+              <input id="chronic" type="text" placeholder="e.g. asthma" />
+            </label>
+
+            <label class="field">
+              <span class="field-label">Prior surgery</span>
+              <input id="surgery" type="text" placeholder="e.g. appendectomy" />
+            </label>
+
+            <label class="field">
+              <span class="field-label">Allergies</span>
+              <input id="allergies" type="text" placeholder="e.g. penicillin" />
+            </label>
+
+            <label class="field">
+              <span class="field-label">Medications</span>
+              <input id="meds" type="text" placeholder="e.g. metformin" />
+            </label>
+          </form>
+
+          <!-- Buttons BEFORE password -->
+          <div class="step-actions pp-actions">
+            <a class="btn btn-ghost" href="/pages/area_patient.html">Back</a>
+            <button id="btnSaveProfile" class="btn btn-primary" type="submit" form="profileForm">
+              Save changes
+            </button>
+          </div>
+
+          <div class="pp-divider"></div>
+
+          <!-- Password change -->
+          <div class="subpanel" style="margin-top:14px;">
+            <div class="subpanel-title">Change password</div>
+            <p class="muted" style="margin-top:6px;">
+              We will email you a 6-digit code (10 min).
+            </p>
+
+            <!-- STEP 1 -->
+            <div id="pwStep1" class="pp-pw">
+              <label class="field">
+                <span class="field-label">New password</span>
+                <input id="newPassword" type="password" minlength="8" autocomplete="new-password"
+                  placeholder="New password" />
+              </label>
+
+              <label class="field">
+                <span class="field-label">Repeat new password</span>
+                <input id="newPassword2" type="password" minlength="8" autocomplete="new-password"
+                  placeholder="Repeat new password" />
+              </label>
+
+              <button id="btnSendCode" class="btn btn-primary" type="button">Send code</button>
+            </div>
+
+            <!-- STEP 2 -->
+            <div id="pwStep2" class="pp-pw is-hidden">
+              <label class="field">
+                <span class="field-label">Code</span>
+                <input id="pwCode" type="text" inputmode="numeric" maxlength="6" autocomplete="one-time-code"
+                  placeholder="e.g. 483921" />
+              </label>
+
+              <div class="step-actions">
+                <button id="btnBackPw" class="btn btn-ghost" type="button">Back</button>
+                <button id="btnConfirmPw" class="btn btn-primary" type="button">Confirm change</button>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="panel" style="margin-top:14px;">
+            <div class="panel-title">Delete account</div>
+            <p class="muted" style="margin:6px 0 14px;">
+              This action disables and anonymizes your account. You will receive a 6-digit code by email to confirm.
+            </p>
+
+            <!-- Step 1 -->
+            <div id="apDelStep1">
+              <button id="btnApSendDeleteCode" class="btn btn-danger" type="button">
+                Send delete code
+              </button>
+            </div>
+
+            <!-- Step 2 -->
+            <div id="apDelStep2" class="is-hidden" style="margin-top:12px;">
+              <label class="field">
+                <span class="field-label">Enter 6-digit code</span>
+                <input id="apDeleteCode" class="input" type="text" inputmode="numeric" maxlength="6"
+                  placeholder="123456" autocomplete="one-time-code" />
+              </label>
+
+              <div class="actions" style="margin-top:12px;">
+                <button id="btnApConfirmDelete" class="btn btn-danger" type="button">
+                  Confirm delete
+                </button>
+                <button id="btnApBackDelete" class="btn btn-ghost" type="button">
+                  Back
+                </button>
+              </div>
+            </div>
+          </div>
+
+
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <div id="toast" class="toast" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="/js/patient_profile.js"></script>
+</body>
+
+</html>

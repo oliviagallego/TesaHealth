@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TesaHealth | Find hospital</title>
+
+  <link rel="icon" href="/assets/img/icono.png" type="image/png" />
+
+  <link rel="stylesheet" href="/css/index.css" />
+  <link rel="stylesheet" href="/css/login-register.css" />
+  <link rel="stylesheet" href="/css/area_patient.css" />
+  <link rel="stylesheet" href="/css/find_hospital.css" />
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="/" aria-label="Go to TesaHealth home">
+        <img class="brand-icon brand-icon--plain" src="/assets/img/icono.png" alt="TesaHealth icon" />
+        <div class="brand-text">
+          <div class="brand-name brand-name--lg">TesaHealth</div>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/pages/patient_home.html" class="nav-link active" aria-current="page">Patient</a>
+        <a href="/pages/clinician_home.html" class="nav-link">Clinician</a>
+        <a href="/pages/admin_home.html" class="nav-link">Admin</a>
+      </nav>
+
+      <div class="nav-cta">
+        <a class="btn btn-ghost" href="/pages/area_patient.html">Back</a>
+        <button id="btnLogout" class="btn btn-ghost" type="button">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="patient">
+    <div class="container">
+      <section class="panel find-head">
+        <h1 class="panel-title">Find hospitals</h1>
+        <p class="panel-sub">
+          Use this tool to locate hospitals near you, check how far they are, and open directions. 
+          Phone numbers may not be available for all entries.
+        </p>
+      </section>
+
+      <section class="find-grid">
+        <section class="panel find-left">
+          <div class="find-controls">
+            <div class="field">
+              <div class="field-label">Your address (Spain)</div>
+              <div class="find-row">
+                <input id="address" class="input" type="text" placeholder="e.g. Calle de Alcalá 45, Madrid" />
+                <button id="btnSearch" class="btn btn-primary" type="button">Search</button>
+              </div>
+              <div class="find-row small">
+                <button id="btnUseMyLocation" class="btn btn-ghost" type="button">Use my current location</button>
+                <span id="geoHint" class="muted">Geolocation may require HTTPS.</span>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="field-label">Search radius</div>
+              <div class="find-row">
+                <input id="radiusKm" class="input" type="number" min="1" max="200" value="10" />
+                <span class="muted">km</span>
+                <button id="btnRefresh" class="btn btn-ghost" type="button">Refresh</button>
+              </div>
+              <div class="muted small">Tip: 5–20 km works best. Bigger radiuses return more results.</div>
+            </div>
+          </div>
+
+          <div class="find-results-head">
+            <h2 class="panel-title" style="font-size:1.05rem;">Results</h2>
+            <div id="resultsMeta" class="muted small">—</div>
+          </div>
+
+          <div id="resultsEmpty" class="empty is-hidden">
+            <div class="empty-title">No results</div>
+            <div class="empty-sub">Try a different address or increase the radius.</div>
+          </div>
+
+          <div id="resultsList" class="results"></div>
+        </section>
+
+        <!-- Right: map -->
+        <section class="panel find-right" aria-label="Map">
+          <div id="map" class="map"></div>
+
+          <!-- Banner Google Maps -->
+          <div id="gmBanner" class="gm-banner is-hidden" role="dialog" aria-label="Open directions in Google Maps">
+            <div class="gm-text">
+              <div class="gm-title" id="gmTitle">Selected center</div>
+              <div class="gm-sub" id="gmSub">Open directions from your location?</div>
+            </div>
+            <div class="gm-actions">
+              <a id="gmOpen" class="btn btn-primary" href="#" target="_blank" rel="noopener">Open in Google Maps</a>
+              <button id="gmClose" class="btn btn-ghost" type="button">Close</button>
+            </div>
+          </div>
+        </section>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img class="brand-icon brand-icon--plain" src="/assets/img/icono.png" alt="TesaHealth icon" />
+        <div>
+          <div class="footer-name">TesaHealth</div>
+        </div>
+      </div>
+
+      <div class="footer-links" aria-label="Footer links">
+        <a href="/">Home</a>
+        <a href="/pages/patient_home.html">Patient</a>
+        <a href="/pages/clinician_home.html">Clinician</a>
+        <a href="/pages/admin_home.html">Admin</a>
+        <a href="/pages/login.html">Login</a>
+        <a href="/pages/register.html">Get started</a>
+      </div>
+
+      <div class="footer-copy">© 2026 TesaHealth • All rights reserved</div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Leaflet -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <script src="/js/find_hospital.js"></script>
+</body>
+
+</html>
