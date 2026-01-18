@@ -123,9 +123,9 @@ function passwordChangeCodeTemplate({ name, code }) {
   const LOGO_URL = process.env.LOGO_URL || `${FRONTEND_URL}/assets/img/icono.png`;
   const ICON_URL = process.env.ICON_URL || `${FRONTEND_URL}/assets/img/icono.png`;
 
-  const SUPPORT_EMAIL = process.env.SUPPORT_EMAIL || "tesahealth.tfg@gmail.com";
-  const SUPPORT_PHONE = process.env.SUPPORT_PHONE || "+34 912 345 678";
-  const SUPPORT_LOCATION = process.env.SUPPORT_LOCATION || "Madrid, Spain";
+  const  SUPPORT_EMAIL= process.env.MAIL_USER || "tesahealth.tfg@gmail.com";
+  const SUPPORT_PHONE = "+34 912 345 678";
+  const SUPPORT_LOCATION ="Madrid, Spain";
 
   const html = applyVars(template, {
     NAME: safeName,
@@ -148,9 +148,9 @@ function passwordChangedTemplate({ name }) {
   const LOGO_URL = process.env.LOGO_URL || `${FRONTEND_URL}/assets/img/icono.png`;
   const ICON_URL = process.env.ICON_URL || `${FRONTEND_URL}/assets/img/icono.png`;
 
-  const SUPPORT_EMAIL = process.env.SUPPORT_EMAIL || "tesahealth.tfg@gmail.com";
-  const SUPPORT_PHONE = process.env.SUPPORT_PHONE || "+34 912 345 678";
-  const SUPPORT_LOCATION = process.env.SUPPORT_LOCATION || "Madrid, Spain";
+  const  SUPPORT_EMAIL= process.env.MAIL_USER || "tesahealth.tfg@gmail.com";
+  const SUPPORT_PHONE = "+34 912 345 678";
+  const SUPPORT_LOCATION = "Madrid, Spain";
 
   const html = applyVars(template, {
     NAME: escapeHtml(name || "there"),
@@ -213,9 +213,9 @@ function verificationNeedsFixTemplate({ name, role, note, fixUrl, fields = [] })
   const LOGO_URL = process.env.LOGO_URL || `${FRONTEND_URL}/assets/img/icono.png`;
   const ICON_URL = process.env.ICON_URL || `${FRONTEND_URL}/assets/img/icono.png`;
 
-  const SUPPORT_EMAIL = process.env.SUPPORT_EMAIL || "tesahealth.tfg@gmail.com";
-  const SUPPORT_PHONE = process.env.SUPPORT_PHONE || "+34 912 345 678";
-  const SUPPORT_LOCATION = process.env.SUPPORT_LOCATION || "Madrid, Spain";
+  const  SUPPORT_EMAIL= process.env.MAIL_USER || "tesahealth.tfg@gmail.com";
+  const SUPPORT_PHONE = "+34 912 345 678";
+  const SUPPORT_LOCATION = "Madrid, Spain";
 
   const fieldsBlock = (fields && fields.length)
     ? `
@@ -339,9 +339,9 @@ function accountDeleteCodeTemplate({ name, code }) {
   const LOGO_URL = process.env.LOGO_URL || `${FRONTEND_URL}/assets/img/icono.png`;
   const ICON_URL = process.env.ICON_URL || `${FRONTEND_URL}/assets/img/icono.png`;
 
-  const SUPPORT_EMAIL = process.env.SUPPORT_EMAIL || "tesahealth.tfg@gmail.com";
-  const SUPPORT_PHONE = process.env.SUPPORT_PHONE || "+34 912 345 678";
-  const SUPPORT_LOCATION = process.env.SUPPORT_LOCATION || "Madrid, Spain";
+  const  SUPPORT_EMAIL= process.env.MAIL_USER || "tesahealth.tfg@gmail.com";
+  const SUPPORT_PHONE = "+34 912 345 678";
+  const SUPPORT_LOCATION = "Madrid, Spain";
 
   const html = applyVars(template, {
     NAME: escapeHtml(name || "there"),
@@ -374,9 +374,9 @@ function consensusReadyTemplate({ name, caseId, reportUrl }) {
   const LOGO_URL = process.env.LOGO_URL || `${FRONTEND_URL}/assets/img/icono.png`;
   const ICON_URL = process.env.ICON_URL || `${FRONTEND_URL}/assets/img/icono.png`;
 
-  const SUPPORT_EMAIL = process.env.SUPPORT_EMAIL || "tesahealth.tfg@gmail.com";
-  const SUPPORT_PHONE = process.env.SUPPORT_PHONE || "+34 912 345 678";
-  const SUPPORT_LOCATION = process.env.SUPPORT_LOCATION || "Madrid, Spain";
+  const  SUPPORT_EMAIL= process.env.MAIL_USER || "tesahealth.tfg@gmail.com";
+  const SUPPORT_PHONE ="+34 912 345 678";
+  const SUPPORT_LOCATION = "Madrid, Spain";
 
   const text =
     `Hi ${name || "there"},\n\n` +
