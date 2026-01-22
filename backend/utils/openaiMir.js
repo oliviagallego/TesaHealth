@@ -78,17 +78,49 @@ const MIR_SCHEMA = {
   }
 };
 
-function formatMirText(stem, options) {
-  const map = new Map((options || []).map((o) => [o.key, o.label]));
-  return (
-    `${stem}\n\n` +
-    `A) ${map.get("A")}\n` +
-    `B) ${map.get("B")}\n` +
-    `C) ${map.get("C")}\n` +
-    `D) ${map.get("D")}\n` +
-    `E) ${map.get("E")}\n`
-  );
+function norm(s) {
+  return String(s || "").toLowerCase().replace(/\s+/g, " ").trim();
 }
+
+function removeTrailingQuestionFromVignette(vignette, leadIn) {
+  let v = String(vignette || "").trim();
+  const l = String(leadIn || "").trim();
+  if (!v) return v;
+
+  const nl = norm(l);
+  if (nl) {
+    while (norm(v).endsWith(nl)) {
+      const nv = norm(v);
+      const idx = nv.lastIndexOf(nl);
+      v = v.slice(0, idx).trim();
+    }
+  }
+
+  for (let i = 0; i < 3; i++) {
+    if (!/\?\s*$/.test(v)) break;
+
+    const qIdx = v.lastIndexOf("?");
+    const start = Math.max(
+      v.lastIndexOf(".", qIdx),
+      v.lastIndexOf("\n", qIdx),
+      v.lastIndexOf("!", qIdx)
+    );
+
+    const lastChunk = v.slice(start + 1, qIdx + 1).trim(); // incluye '?'
+
+    const looksLikeLeadIn =
+      /^(what|which|based on)\b/i.test(lastChunk) ||
+      /most likely/i.test(lastChunk) ||
+      /diagnos/i.test(lastChunk);
+
+    if (!looksLikeLeadIn) break;
+
+    v = (start >= 0 ? v.slice(0, start + 1) : v.slice(0, qIdx)).trim();
+  }
+
+  return v.trim();
+}
+
 
 function buildOpenAiCasePayload({ context, infermedica, interview_log }) {
   const ctx = context || {};
@@ -99,6 +131,8 @@ function buildOpenAiCasePayload({ context, infermedica, interview_log }) {
       pregnant: ctx.pregnant ?? null,
       height: ctx.height ?? null,
       weight: ctx.weight ?? null,
+      bmi: ctx.bmi ?? null,
+      bmi_category: ctx.bmi_category ?? null,
       smoking: ctx.smoking ?? null,
       high_blood_pressure: ctx.high_blood_pressure ?? null,
       diabetes: ctx.diabetes ?? null,
@@ -164,6 +198,7 @@ async function generateMirQuestion({
   - Realistic clinical vignette (3–6 lines) + clear lead-in
   - Exactly one best answer among A–D
   - No PII
+  - IMPORTANT: The vignette must NOT contain any question/lead-in. Put the question ONLY in lead_in.
   Return STRICT JSON following schema.`;
 
   const payload = { context: payloadContext, focus, difficulty, topic, options };
@@ -183,8 +218,12 @@ async function generateMirQuestion({
     const parsed = JSON.parse(resp.output_text);
 
     const pub = parsed.public || {};
-    const vignette = (pub.vignette || "").trim();
+    let vignette = (pub.vignette || "").trim();
     const lead_in = (pub.lead_in || "").trim();
+    vignette = removeTrailingQuestionFromVignette(vignette, lead_in);
+    parsed.public.vignette = vignette;
+    parsed.public.lead_in = lead_in;
+
     parsed.public.question_text = `${vignette}\n\n${lead_in}`.trim();
     parsed.public.options = pub.options || options;
 

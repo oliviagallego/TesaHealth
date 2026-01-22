@@ -1032,15 +1032,6 @@ document.addEventListener("DOMContentLoaded", () => {
           : `<div class="muted">No infermedica probabilities available.</div>`
         }
           
-          ${Array.isArray(insights?.infermedica?.top_conditions) && insights.infermedica.top_conditions.length ? `
-          <div class="divider"></div>
-          <div class="muted" style="margin-bottom:8px;"><strong>Top Infermedica conditions</strong></div>
-          ${renderInfermedicaBars(insights.infermedica.top_conditions.map(x => ({
-          label: x.name,
-          probability: x.probability,
-          source: "infermedica"
-        })))}
-          ` : ""}
 
         </div>
 

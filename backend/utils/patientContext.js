@@ -86,7 +86,33 @@ function mapSex(patientSex) {
   return "female";
 }
 
+function calcBMI(heightCm, weightKg) {
+  const h = Number(heightCm);
+  const w = Number(weightKg);
+  if (!Number.isFinite(h) || !Number.isFinite(w)) return null;
+  if (h <= 0 || w <= 0) return null;
+
+  if (h < 80 || h > 250) return null;
+  if (w < 20 || w > 400) return null;
+
+  const m = h / 100;
+  const bmi = w / (m * m);
+  return Math.round(bmi * 10) / 10;
+}
+
+function bmiCategory(bmi) {
+  if (bmi == null) return null;
+  if (bmi < 18.5) return "underweight";
+  if (bmi < 25) return "normal";
+  if (bmi < 30) return "overweight";
+  if (bmi < 35) return "obesity_I";
+  if (bmi < 40) return "obesity_II";
+  return "obesity_III";
+}
+
+
 function buildPatientContext({ user, patientProfile, evidence }) {
+  const bmi = calcBMI(patientProfile?.height, patientProfile?.weight);
   return {
     sex: mapSex(patientProfile?.sex),
     age: calcAge(user?.dob),
@@ -95,6 +121,10 @@ function buildPatientContext({ user, patientProfile, evidence }) {
     pregnant: patientProfile?.pregnant ?? null,
     height: patientProfile?.height ?? null,
     weight: patientProfile?.weight ?? null,
+
+    bmi: bmi,
+    bmi_category: bmiCategory(bmi),
+    
     smoking: patientProfile?.smoking ?? null,
     high_blood_pressure: patientProfile?.high_blood_pressure ?? null,
     diabetes: patientProfile?.diabetes ?? null,

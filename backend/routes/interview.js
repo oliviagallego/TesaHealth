@@ -313,6 +313,8 @@ router.post("/:caseId/finish", auth, requirePatient, async (req, res, next) => {
       pregnant: context.pregnant ?? null,
       height: context.height ?? null,
       weight: context.weight ?? null,
+      bmi: context.bmi ?? null,
+      bmi_category: context.bmi_category ?? null,
       smoking: context.smoking ?? null,
       high_blood_pressure: context.high_blood_pressure ?? null,
       diabetes: context.diabetes ?? null,
