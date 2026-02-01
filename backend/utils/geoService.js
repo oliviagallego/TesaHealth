@@ -61,6 +61,8 @@ async function geocodeSpain(q) {
 
 const DEFAULT_OVERPASS_ENDPOINTS = [
   "https://overpass-api.de/api/interpreter",
+  "https://overpass.kumi.systems/api/interpreter",
+  "https://overpass.nchc.org.tw/api/interpreter",
   "https://overpass.private.coffee/api/interpreter",
   "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
   "https://overpass.osm.jp/api/interpreter",
@@ -82,7 +84,7 @@ function sleep(ms) {
 function buildHospitalsQuery(lat, lon, radiusMeters) {
 
   return `
-    [out:json][timeout:25];
+    [out:json][timeout:40];
     (
       nwr(around:${radiusMeters},${lat},${lon})["amenity"="hospital"];
       nwr(around:${radiusMeters},${lat},${lon})["healthcare"="hospital"];
@@ -94,7 +96,7 @@ function buildHospitalsQuery(lat, lon, radiusMeters) {
 
 async function postOverpass(url, query) {
   const ctrl = new AbortController();
-  const t = setTimeout(() => ctrl.abort(), 25_000);
+  const t = setTimeout(() => ctrl.abort(), 45_000);
 
   try {
     const res = await fetch(url, {
@@ -111,13 +113,13 @@ async function postOverpass(url, query) {
     const text = await res.text();
 
     if (res.status === 429) throw new Error("RATE_LIMIT");
-    if (!res.ok) throw new Error(`HTTP_${res.status}: ${text.slice(0, 200)}`);
+    if (!res.ok) throw new Error(`OVERPASS ${url} HTTP_${res.status}: ${text.slice(0, 200)}`);
 
     let json;
     try {
       json = JSON.parse(text);
     } catch {
-      throw new Error("BAD_JSON: " + text.slice(0, 200));
+      throw new Error(`OVERPASS ${url} BAD_JSON: ${text.slice(0, 200)}`);
     }
 
     return json;
@@ -159,7 +161,7 @@ async function geocodeSpainCached(q) {
   const r = await geocodeSpain(q);
   if (!r) return null;
 
-  cachedSet(key, r, 24 * 60 * 60 * 1000);
+  cachedSet(key, r, 30 * 60 * 60 * 1000);
   return { ...r, cached: false };
 }
 
