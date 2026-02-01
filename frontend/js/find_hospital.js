@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const API_BASE =
     localStorage.getItem("apiBase") ||
-    (location.port === "3001" ? location.origin : "http://localhost:3001");
+    (location.hostname === "localhost" ?  "http://localhost:3001" : location.origin);
 
   const apiUrl = (p) => (p.startsWith("http") ? p : API_BASE + p);
 
