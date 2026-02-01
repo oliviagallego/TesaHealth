@@ -37,7 +37,7 @@ router.get("/hospitals", auth, async (req, res) => {
   } catch (e) {
     if (String(e.message) === "RATE_LIMIT") return res.status(429).json({ error: "RATE_LIMIT" });
     console.error("[GEO] hospitals failed:", e);
-    res.status(502).json({ error: "Overpass failed" });
+    res.status(502).json({ error: "Overpass failed", detail: String(e?.message || e) });
   }
 });
 
