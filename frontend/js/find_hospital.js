@@ -2,9 +2,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const toast = document.getElementById("toast");
   const $ = (id) => document.getElementById(id);
 
-  const API_BASE =
-    localStorage.getItem("apiBase") ||
-    (location.hostname === "localhost" ?  "http://localhost:3001" : location.origin);
+  const isLocal =
+    location.hostname === "localhost" || location.hostname === "127.0.0.1";
+
+  const savedApiBase = isLocal ? localStorage.getItem("apiBase") : null;
+
+  const API_BASE = savedApiBase || (isLocal ? "http://localhost:3001" : location.origin);
 
   const apiUrl = (p) => (p.startsWith("http") ? p : API_BASE + p);
 
