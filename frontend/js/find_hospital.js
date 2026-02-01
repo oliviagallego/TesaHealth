@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
       headers: auth ? authHeaders() : {},
     });
     const data = await res.json().catch(() => ({}));
-    if (!res.ok) throw new Error(data?.error || `Request failed: ${res.status}`);
+    if (!res.ok) throw new Error(data?.detail || data?.error || `Request failed: ${res.status}`);
     return data;
   }
 
@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const data = await res.json().catch(() => ({}));
 
     if (res.status === 429) throw new Error("RATE_LIMIT");
-    if (!res.ok) throw new Error(data?.error || `Request failed: ${res.status}`);
+    if (!res.ok) throw new Error(data?.detail || data?.error || `Request failed: ${res.status}`);
 
     return { elements: Array.isArray(data.elements) ? data.elements : [] };
   }
