@@ -93,9 +93,21 @@ function buildHospitalsQuery(lat, lon, radiusMeters) {
 }
 
 
-async function postOverpass(url, query) {
+async function postOverpass(url, query, externalSignal) {
   const ctrl = new AbortController();
-  const t = setTimeout(() => ctrl.abort(), 45_000);
+  const t = setTimeout(() => ctrl.abort(new Error("OVERPASS_TIMEOUT")), 20_000);
+
+  if (externalSignal) {
+    if (externalSignal.aborted) {
+      ctrl.abort(externalSignal.reason);
+    } else {
+      externalSignal.addEventListener(
+        "abort",
+        () => ctrl.abort(externalSignal.reason),
+        { once: true }
+      );
+    }
+  }
 
   try {
     const res = await fetch(url, {
@@ -114,18 +126,16 @@ async function postOverpass(url, query) {
     if (res.status === 429) throw new Error("RATE_LIMIT");
     if (!res.ok) throw new Error(`OVERPASS ${url} HTTP_${res.status}: ${text.slice(0, 200)}`);
 
-    let json;
     try {
-      json = JSON.parse(text);
+      return JSON.parse(text);
     } catch {
       throw new Error(`OVERPASS ${url} BAD_JSON: ${text.slice(0, 200)}`);
     }
-
-    return json;
   } finally {
     clearTimeout(t);
   }
 }
+
 
 async function overpassHospitals(lat, lon, radiusMeters) {
   const query = buildHospitalsQuery(lat, lon, radiusMeters);

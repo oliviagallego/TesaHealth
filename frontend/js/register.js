@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function computeBmi(weightKg, heightCm) {
     const w = Number(weightKg);
-    const h = Number(heightCm);
+    const h = Number(heightCm); 
     if (!Number.isFinite(w) || !Number.isFinite(h) || w <= 0 || h <= 0) return null;
     const m = h / 100;
     return w / (m * m);
@@ -180,7 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderBmiInfo() {
     const bmi = computeBmi(pWeight?.value, pHeight?.value);
     if (!bmi) {
-      bmiText.textContent =
+      bmiText.textContent = 
         "To calculate your BMI, enter your weight (kg) and height (cm). BMI is a simple ratio that estimates whether your weight is in a healthy range for your height.";
       return;
     }
